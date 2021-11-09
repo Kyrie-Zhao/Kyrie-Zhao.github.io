@@ -1,6 +1,32 @@
-@inproceedings{advlt2021wu,
-  title={Adversarial Robustness under Long-Tailed Distribution},
-  author={Wu, Tong and Liu, Ziwei and Huang, Qingqiu and Wang, Yu and Lin, Dahua},
-  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year={2021}
+@inproceedings{10.1145/3450268.3453520,
+author = {Zhao, Zhihe and Wang, Kai and Ling, Neiwen and Xing, Guoliang},
+title = {EdgeML: An AutoML Framework for Real-Time Deep Learning on the Edge},
+year = {2021},
+isbn = {9781450383547},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3450268.3453520},
+doi = {10.1145/3450268.3453520},
+abstract = {In recent years, deep learning algorithms are increasingly adopted by a wide range
+of data-intensive and time-critical Internet of Things (IoT) applications. As a result,
+several new approaches, including model partition/offloading and progressive neural
+architecture, have been proposed to address the challenge of deploying the computation-intensive
+deep neural network (DNN) models on resource-constrained edge devices. However, the
+performance of existing approaches is highly affected by runtime dynamics. For example,
+offloading workload from edge to cloud suffers from communication delays and the efficiency
+of progressive neural architecture supporting early-exit DNN executions relies on
+input characteristics. In this paper, we introduce EdgeML, an AutoML framework that
+provides flexible and fine-grained DNN model execution control by combining workload
+offloading mechanism and dynamic progressive neural architecture. To achieve desirable
+latency-accuracy-energy system performance on edge platforms, EdgeML adopts reinforcement
+learning to automatically update model execution policy in response to runtime dynamics
+in real-time. We implement EdgeML for several widely used DNN models on the latest
+edge devices. Comparing to existing approaches, our experiments show that EdgeML achieves
+up to 8\texttimes{} performance improvement under dynamic environments.},
+booktitle = {Proceedings of the International Conference on Internet-of-Things Design and Implementation},
+pages = {133–144},
+numpages = {12},
+keywords = {Reinforcement Learning, Edge Computing, Deep Neural Network},
+location = {Charlottesvle, VA, USA},
+series = {IoTDI '21}
 }
