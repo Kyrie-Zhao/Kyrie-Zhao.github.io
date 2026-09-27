@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "after-muse-and-today",
+    "title": "After Muse and Today, What Is Still Missing?",
+    "category": "Personal AI",
+    "description": "As personal agents become better at doing things, deciding what is worth doing becomes more important.",
+    "date": "2026-09-27",
+    "related": [
+      "business-beyond-productivity",
+      "when-an-agent-does-nothing"
+    ]
+  },
+  {
+    "slug": "dont-make-me-teach-my-ai-twice",
+    "title": "Don’t Make Me Teach My AI Twice",
+    "category": "Personal AI",
+    "description": "The value of memory appears in the next result, when an old correction saves new work.",
+    "date": "2026-09-27",
+    "related": [
+      "did-memory-change-the-decision",
+      "corrections-are-not-global-preferences"
+    ]
+  },
+  {
+    "slug": "business-beyond-productivity",
+    "title": "Is There a Business Beyond Productivity?",
+    "category": "Building Products",
+    "description": "Emotional value can be real. A product still has to earn a second use and pay for its own delivery.",
+    "date": "2026-09-27",
+    "related": [
+      "after-muse-and-today",
+      "we-lost-the-reader"
+    ]
+  },
+  {
+    "slug": "we-lost-the-reader",
+    "title": "My AI and I Lost the Reader",
+    "category": "Building Products",
+    "description": "Shared context can make two collaborators forget the person they are writing for.",
+    "date": "2026-09-27",
+    "related": [
+      "relevant-does-not-mean-usable",
+      "business-beyond-productivity"
+    ]
+  },
+  {
+    "slug": "who-keeps-the-promise",
+    "title": "Who Keeps the Promise an AI Makes?",
+    "category": "Personal AI",
+    "description": "A polished draft can quietly commit its sender to something they never decided.",
+    "date": "2026-09-27",
+    "related": [
+      "the-refusal-ai-edited-away",
+      "a-citation-is-not-enough"
+    ]
+  },
+  {
+    "slug": "the-refusal-ai-edited-away",
+    "title": "The Refusal My AI Edited Away",
+    "category": "Personal AI",
+    "description": "Good rewriting preserves what a sentence does, as well as what it says.",
+    "date": "2026-09-27",
+    "related": [
+      "who-keeps-the-promise",
+      "corrections-are-not-global-preferences"
+    ]
+  },
+  {
+    "slug": "not-every-day-is-an-epiphany",
+    "title": "Not Every Day Is an Epiphany",
+    "category": "Personal AI",
+    "description": "An AI-generated interpretation of a life should not quietly become evidence about that life.",
+    "date": "2026-09-27",
+    "related": [
+      "a-citation-is-not-enough",
+      "the-right-to-change-your-mind"
+    ]
+  },
+  {
+    "slug": "the-right-to-change-your-mind",
+    "title": "Personal AI Needs a Right to Change Your Mind",
+    "category": "Personal AI",
+    "description": "Long-term understanding should make it easier to revise an arrangement, not harder to escape an old profile.",
+    "date": "2026-09-27",
+    "related": [
+      "corrections-are-not-global-preferences",
+      "relevant-does-not-mean-usable"
+    ]
+  },
+  {
+    "slug": "did-memory-change-the-decision",
+    "title": "Did Memory Actually Change the Decision?",
+    "category": "Technical Notes",
+    "description": "A practical way to distinguish memory access, behavioral influence, and user value.",
+    "date": "2026-09-27",
+    "related": [
+      "dont-make-me-teach-my-ai-twice",
+      "corrections-are-not-global-preferences"
+    ]
+  },
+  {
+    "slug": "a-citation-is-not-enough",
+    "title": "A Citation Is Not Enough: Who Does This Fact Belong To?",
+    "category": "Technical Notes",
+    "description": "Source support, speaker identity, and autobiographical truth are different checks.",
+    "date": "2026-09-27",
+    "related": [
+      "not-every-day-is-an-epiphany",
+      "relevant-does-not-mean-usable"
+    ]
+  },
+  {
+    "slug": "when-an-agent-does-nothing",
+    "title": "When an Agent Does Nothing, What Actually Happened?",
+    "category": "Technical Notes",
+    "description": "Evaluating restraint requires an opportunity to act—and an honest account of failures.",
+    "date": "2026-09-27",
+    "related": [
+      "after-muse-and-today",
+      "did-memory-change-the-decision"
+    ]
+  },
+  {
+    "slug": "capabilities-are-not-modules",
+    "title": "Agent Capabilities Don’t Have to Be Modules",
+    "category": "Technical Notes",
+    "description": "Fix the boundaries that must hold. Let task structure earn its complexity.",
+    "date": "2026-09-27",
+    "related": [
+      "relevant-does-not-mean-usable",
+      "did-memory-change-the-decision"
+    ]
+  },
+  {
+    "slug": "relevant-does-not-mean-usable",
+    "title": "Relevant Doesn’t Mean Usable: Context for Personal AI",
+    "category": "Technical Notes",
+    "description": "Context selection has to consider time, uncertainty, purpose, and the person receiving the result.",
+    "date": "2026-09-27",
+    "related": [
+      "a-citation-is-not-enough",
+      "we-lost-the-reader"
+    ]
+  },
+  {
+    "slug": "corrections-are-not-global-preferences",
+    "title": "A User Correction Is Not a Global Preference",
+    "category": "Technical Notes",
+    "description": "Feedback needs an object, a scope, and a way to check whether the next behavior improved.",
+    "date": "2026-09-27",
+    "related": [
+      "dont-make-me-teach-my-ai-twice",
+      "the-right-to-change-your-mind"
+    ]
+  }
+]

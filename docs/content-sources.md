@@ -40,3 +40,11 @@ The inherited `index.json` included unrelated template biography text (a differe
 ## Account migration
 
 On 27 September 2026, the author authorized renaming the GitHub account to `bob-zhihe` and the Pages repository to `bob-zhihe.github.io`. Current site metadata and links use the new address; original provenance above is retained. The first-screen credentials now highlight the PhD and Forbes recognition; SenSys poster recognition remains in research and awards.
+
+## English writing collection — 27 September 2026
+
+Published with the author's instruction to release the full English collection. Eight essays adapt author-provided Chinese editorial drafts; six technical notes develop the discussed research questions using explicitly synthetic examples and proposed evaluation methods. This is the first website publication date, not a claimed earlier WeChat publication date.
+
+The technical collection separates proposals from validated results. It does not publish internal whitepapers, patent documents, private transcripts, experiment identifiers, or unpublished implementation chains. Public source descriptions were checked against Meta's Muse announcement, Today's introduction, the LangMem conceptual guide, and W3C PROV Overview. Those links appear next to relevant statements. The site does not claim a comparative product test, new algorithm, granted patent, or completed silence benchmark.
+
+Homepage highlights two technical notes and one personal-AI essay. The full directory groups all 14 texts into Technical Notes, Personal AI, and Building Products. English source Markdown and metadata are canonical; HTML, feeds, and the directory are generated together.

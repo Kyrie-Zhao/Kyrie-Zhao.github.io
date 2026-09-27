@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When an Agent Does Nothing, What Actually Happened? — Zhihe (Bob) Zhao</title>
+<meta name="description" content="Evaluating restraint requires an opportunity to act—and an honest account of failures.">
+<meta name="author" content="Zhihe (Bob) Zhao"><meta name="theme-color" content="#f8f7f3">
+<link rel="canonical" href="https://bob-zhihe.github.io/writing/when-an-agent-does-nothing/"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/writing.css">
+<link rel="alternate" type="application/rss+xml" title="Zhihe Zhao — Writing" href="/writing/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="When an Agent Does Nothing, What Actually Happened?"><meta property="og:description" content="Evaluating restraint requires an opportunity to act—and an honest account of failures.">
+<meta property="og:url" content="https://bob-zhihe.github.io/writing/when-an-agent-does-nothing/"><meta property="og:site_name" content="Zhihe (Bob) Zhao">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="When an Agent Does Nothing, What Actually Happened?">
+<meta name="twitter:description" content="Evaluating restraint requires an opportunity to act—and an honest account of failures."><meta property="article:published_time" content="2026-09-27">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "When an Agent Does Nothing, What Actually Happened?", "description": "Evaluating restraint requires an opportunity to act—and an honest account of failures.", "author": {"@type": "Person", "name": "Zhihe (Bob) Zhao", "url": "https://bob-zhihe.github.io/"}, "datePublished": "2026-09-27", "dateModified": "2026-09-27", "mainEntityOfPage": "https://bob-zhihe.github.io/writing/when-an-agent-does-nothing/", "inLanguage": "en", "articleSection": "Technical Notes"}</script>
+</head><body id="top"><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap header-inner">
+<a class="wordmark" href="/">Zhihe Zhao<span>Bob</span></a>
+<nav aria-label="Main navigation"><a href="/#work">Current work</a><a href="/writing/" aria-current="false">Writing</a><a href="/#featured">Research</a><a href="/#contact">Contact</a></nav>
+</div></header><main id="main" class="wrap article-main">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/writing/">Writing</a><span aria-hidden="true">/</span><a href="/writing/#technical-notes">Technical Notes</a></nav>
+<header class="article-header"><p class="eyebrow">Technical Notes</p><h1>When an Agent Does Nothing, What Actually Happened?</h1>
+<p class="article-deck">Evaluating restraint requires an opportunity to act—and an honest account of failures.</p>
+<p class="article-byline">Zhihe (Bob) Zhao <span>·</span> <time datetime="2026-09-27">September 27, 2026</time> <span>·</span> 4 min read</p></header>
+<div class="article-layout"><aside class="article-toc" aria-label="On this page"><p>In this article</p><div class="toc">
+<ul>
+<li><a href="#observe-a-decision-opportunity">Observe a decision opportunity</a></li>
+<li><a href="#separate-outcomes-before-scoring-them">Separate outcomes before scoring them</a></li>
+<li><a href="#hide-the-future-during-the-first-judgment">Hide the future during the first judgment</a></li>
+<li><a href="#include-both-action-and-non-action-cases">Include both action and non-action cases</a></li>
+<li><a href="#explanations-are-not-sufficient-evidence">Explanations are not sufficient evidence</a></li>
+</ul>
+</div>
+</aside>
+<article class="article-body" aria-label="Article text"><p>A proactive assistant produces no notification. Did it respect the person's attention?</p>
+<p>It might have. It might also have missed the event, lacked a useful tool, run out of budget, or failed before making a decision. The screen looks identical in every case.</p>
+<p>This makes “silence” a difficult product metric. Counting fewer interruptions can reward a system that never works. Counting more interventions can reward one that creates work for its owner.</p>
+<p>What follows is a proposed evaluation approach, not a validated benchmark or a report of measured restraint.</p>
+<h2 id="observe-a-decision-opportunity">Observe a decision opportunity</h2>
+<p>Start with a bounded situation in which the assistant could plausibly act. Specify what information was available at that moment, what the user permitted, what actions were possible, and how long a response could remain useful.</p>
+<p>Consider a synthetic example. A user wants help preparing for an important call. At 10:00, the call's agenda is unclear. At 10:15, a permitted source provides the agenda. At 10:30, the call starts.</p>
+<p>An early generic reminder, a later useful briefing, and a briefing after the call are not equivalent successes. Nor should an evaluator at 10:00 judge with knowledge that only arrived at 10:15.</p>
+<p>The unit of evaluation is the opportunity and its information boundary, not merely the notification that happened to be generated.</p>
+<h2 id="separate-outcomes-before-scoring-them">Separate outcomes before scoring them</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Observed situation</th>
+<th>Question to ask</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The agent acts</td>
+<td>Was the action useful, timely, and permitted?</td>
+</tr>
+<tr>
+<td>The agent waits</td>
+<td>What could change the decision, and was waiting affordable?</td>
+</tr>
+<tr>
+<td>The agent declines to intervene</td>
+<td>Was there insufficient justification, or was non-intervention preferred?</td>
+</tr>
+<tr>
+<td>Execution fails</td>
+<td>What prevented a decision or delivery?</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are evaluation distinctions, not a claim that every product needs exactly four runtime states. A task may need finer distinctions. The important requirement is that operational failure cannot silently acquire the meaning of considerate restraint.</p>
+<p>If the system lacks access to the agenda source, its lack of a briefing does not demonstrate a deliberate decision to wait for it. If the run ends before the agenda arrives, the protocol may never have offered the behavior a chance to occur.</p>
+<h2 id="hide-the-future-during-the-first-judgment">Hide the future during the first judgment</h2>
+<p>An evaluator can first inspect only the material available at the decision time. Before seeing the model output or later outcome, they record which actions seem justified and what uncertainties remain.</p>
+<p>Only after that judgment is fixed do they see the later evidence. They can then examine whether a wait became useful, whether an intervention was premature, and whether hindsight changed the story they were tempted to tell.</p>
+<p>The second stage does not automatically overwrite the first. A reasonable decision can have an unfortunate outcome. A lucky outcome can follow an unjustified decision.</p>
+<p>Personal preference also matters. Two users may legitimately disagree about the cost of a reminder. Facts and permission boundaries need checking separately from whether the person wanted the interruption.</p>
+<h2 id="include-both-action-and-non-action-cases">Include both action and non-action cases</h2>
+<p>An evaluation made entirely of interesting moments encourages overproduction. It needs ordinary, repetitive, irrelevant, and prohibited cases too. Equally, a set containing only reasons to remain silent cannot establish that an assistant recognizes useful opportunities.</p>
+<p>Report missed opportunities separately from unwelcome interventions. Report timing errors separately from content quality. Count failures and the cost of unsuccessful attempts rather than considering only delivered results.</p>
+<p>A high average usefulness score should not compensate for an unauthorized disclosure. Different errors have different consequences; collapsing them can obscure the product's most serious weakness.</p>
+<h2 id="explanations-are-not-sufficient-evidence">Explanations are not sufficient evidence</h2>
+<p>“I decided not to interrupt” is a claim made by the agent. A useful trace would also establish what it had seen, which actions were possible, and whether execution reached a genuine decision.</p>
+<p>Even that trace cannot expose every unexpressed thought. I would avoid claiming that instrumentation can prove the absence of an internal candidate. We can inspect recorded behavior and design comparisons; we cannot turn a missing log into complete access to a model's internal reasoning.</p>
+<p>The aim is modest but important: make the absence of output interpretable. Before celebrating an assistant's restraint, establish that it had the information, permission, tools, and opportunity to do something else.</p>
+<div class="article-author"><p><strong>Zhihe (Bob) Zhao</strong> is the founder of AxiomsTen, building Spiro. His work explores personal AI, long-term memory, and how systems use an understanding of a person.</p><a href="/">About the author →</a></div></article></div>
+<section class="related-writing" aria-labelledby="related-title"><p class="eyebrow">Keep reading</p><h2 id="related-title">Connected questions</h2><div class="related-grid"><article class="writing-entry">
+<p class="writing-meta">Personal AI <span>· 4 min read</span></p>
+<h3><a href="/writing/after-muse-and-today/">After Muse and Today, What Is Still Missing?</a></h3>
+<p class="writing-summary">As personal agents become better at doing things, deciding what is worth doing becomes more important.</p></article><article class="writing-entry">
+<p class="writing-meta">Technical Notes <span>· 4 min read</span></p>
+<h3><a href="/writing/did-memory-change-the-decision/">Did Memory Actually Change the Decision?</a></h3>
+<p class="writing-summary">A practical way to distinguish memory access, behavioral influence, and user value.</p></article></div></section></main><footer class="wrap writing-footer"><p>© 2026 Zhihe (Bob) Zhao</p><nav aria-label="Footer"><a href="/writing/">All writing</a><a href="/writing/feed.xml">RSS</a><a href="/#contact">Get in touch</a><a href="#top">Back to top ↑</a></nav></footer></body></html>

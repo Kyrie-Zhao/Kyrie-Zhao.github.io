@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A User Correction Is Not a Global Preference — Zhihe (Bob) Zhao</title>
+<meta name="description" content="Feedback needs an object, a scope, and a way to check whether the next behavior improved.">
+<meta name="author" content="Zhihe (Bob) Zhao"><meta name="theme-color" content="#f8f7f3">
+<link rel="canonical" href="https://bob-zhihe.github.io/writing/corrections-are-not-global-preferences/"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/writing.css">
+<link rel="alternate" type="application/rss+xml" title="Zhihe Zhao — Writing" href="/writing/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A User Correction Is Not a Global Preference"><meta property="og:description" content="Feedback needs an object, a scope, and a way to check whether the next behavior improved.">
+<meta property="og:url" content="https://bob-zhihe.github.io/writing/corrections-are-not-global-preferences/"><meta property="og:site_name" content="Zhihe (Bob) Zhao">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="A User Correction Is Not a Global Preference">
+<meta name="twitter:description" content="Feedback needs an object, a scope, and a way to check whether the next behavior improved."><meta property="article:published_time" content="2026-09-27">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A User Correction Is Not a Global Preference", "description": "Feedback needs an object, a scope, and a way to check whether the next behavior improved.", "author": {"@type": "Person", "name": "Zhihe (Bob) Zhao", "url": "https://bob-zhihe.github.io/"}, "datePublished": "2026-09-27", "dateModified": "2026-09-27", "mainEntityOfPage": "https://bob-zhihe.github.io/writing/corrections-are-not-global-preferences/", "inLanguage": "en", "articleSection": "Technical Notes"}</script>
+</head><body id="top"><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap header-inner">
+<a class="wordmark" href="/">Zhihe Zhao<span>Bob</span></a>
+<nav aria-label="Main navigation"><a href="/#work">Current work</a><a href="/writing/" aria-current="false">Writing</a><a href="/#featured">Research</a><a href="/#contact">Contact</a></nav>
+</div></header><main id="main" class="wrap article-main">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/writing/">Writing</a><span aria-hidden="true">/</span><a href="/writing/#technical-notes">Technical Notes</a></nav>
+<header class="article-header"><p class="eyebrow">Technical Notes</p><h1>A User Correction Is Not a Global Preference</h1>
+<p class="article-deck">Feedback needs an object, a scope, and a way to check whether the next behavior improved.</p>
+<p class="article-byline">Zhihe (Bob) Zhao <span>·</span> <time datetime="2026-09-27">September 27, 2026</time> <span>·</span> 4 min read</p></header>
+<div class="article-layout"><aside class="article-toc" aria-label="On this page"><p>In this article</p><div class="toc">
+<ul>
+<li><a href="#first-identify-what-was-being-corrected">First identify what was being corrected</a></li>
+<li><a href="#scope-is-part-of-the-meaning">Scope is part of the meaning</a></li>
+<li><a href="#test-the-intended-effect-and-the-collateral-effect">Test the intended effect and the collateral effect</a></li>
+<li><a href="#the-user-can-change-the-arrangement">The user can change the arrangement</a></li>
+<li><a href="#do-not-confuse-writing-instructions-with-a-person">Do not confuse writing instructions with a person</a></li>
+</ul>
+</div>
+</aside>
+<article class="article-body" aria-label="Article text"><p>“Please make this less emotional.”</p>
+<p>A personal assistant could interpret that as a revision to one paragraph, a preference for this kind of message, a general writing preference, or a fact about the user's personality.</p>
+<p>The sentence alone may not tell us which one is intended. A system eager to learn can become confidently wrong by choosing the broadest interpretation.</p>
+<p>This note proposes a way to reason about feedback scope. The examples are synthetic and the checks are design suggestions, not evidence that automatic feedback attribution has been solved.</p>
+<h2 id="first-identify-what-was-being-corrected">First identify what was being corrected</h2>
+<p>Consider three replies to a family-message draft:</p>
+<blockquote>
+<p>That did not happen.</p>
+<p>It happened, but do not mention it to my parents.</p>
+<p>You can mention it, but this paragraph sounds like a farewell speech.</p>
+</blockquote>
+<p>The first disputes content. The second limits disclosure. The third concerns expression. Saving all three as negative sentiment toward a topic loses the difference between them.</p>
+<p>An update to wording should not quietly erase a factual record. A disclosure restriction should not be treated as evidence that the event never happened. A factual correction should reach later uses of the mistaken claim, not merely soften its next expression.</p>
+<h2 id="scope-is-part-of-the-meaning">Scope is part of the meaning</h2>
+<p>A useful interpretation of feedback keeps the affected task and circumstances in view. “Do not force a life lesson into a weekly update” does not prohibit lessons in a retrospective. “Not today” does not always revoke a standing preference. “Never share this with my family” is not a request for a different tone.</p>
+<p>When the scope is ambiguous, there are several possible responses: ask a focused question, apply the change locally, or preserve a tentative interpretation for later confirmation. Which is appropriate depends on the consequence of getting it wrong and the burden of interrupting the user.</p>
+<p>The system should not ask for clarification about every adjective. It also should not silently promote every edit into a durable rule.</p>
+<h2 id="test-the-intended-effect-and-the-collateral-effect">Test the intended effect and the collateral effect</h2>
+<p>A simple evaluation uses a correction, a related task, and an unrelated task.</p>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Desired observation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Another weekly update</td>
+<td>The unwanted closing reflection is reduced</td>
+</tr>
+<tr>
+<td>A requested project retrospective</td>
+<td>Useful lessons are still included</td>
+</tr>
+<tr>
+<td>A factual summary of the original event</td>
+<td>The underlying event remains unchanged</td>
+</tr>
+<tr>
+<td>A later explicit instruction requesting reflection</td>
+<td>The current instruction is handled within its scope</td>
+</tr>
+</tbody>
+</table></div>
+<p>A system that removes reflective language everywhere has learned an effect but not its boundary. A system that only fixes the current paragraph may have respected scope but failed to retain a clearly intended recurring preference.</p>
+<p>The evaluator needs to specify which of these interpretations the scenario supports before inspecting model behavior. Otherwise almost any output can be defended afterward as a reasonable personalization choice.</p>
+<h2 id="the-user-can-change-the-arrangement">The user can change the arrangement</h2>
+<p>A previously accurate preference may no longer apply. This differs from correcting an earlier misunderstanding.</p>
+<p>If someone once wanted strict reminders and now asks to pause them, the old arrangement need not become false history. The question is what should govern behavior now. Similarly, withdrawing a use of information does not necessarily mean disputing the information itself.</p>
+<p>This distinction helps avoid destructive updates in which one change erases useful context elsewhere. It also makes it possible to explain why the assistant behaves differently without insisting the user has been inconsistent.</p>
+<p>A change should have a visible effect on the appropriate future task. “I understand” is not a substitute for that observation.</p>
+<h2 id="do-not-confuse-writing-instructions-with-a-person">Do not confuse writing instructions with a person</h2>
+<p>A user's style preferences can tell us how they want a particular artifact written. They are not automatically evidence of emotional disposition, relationship quality, or long-term identity.</p>
+<p>This is especially important when several task memories share one person model. An instruction from a work report should not become an unexamined premise in a family message. Shared storage does not imply shared applicability.</p>
+<p>Builders can make that boundary explicit in evaluation without prescribing a universal set of physical modules. The problem is the authority and scope of an update, regardless of where the implementation stores it.</p>
+<p>The success criterion is practical: the next relevant task gets better, unrelated tasks do not get worse, and the person can revise the arrangement again. Learning should reduce the work of managing the assistant, rather than turn every correction into a negotiation with an expanding rulebook.</p>
+<div class="article-author"><p><strong>Zhihe (Bob) Zhao</strong> is the founder of AxiomsTen, building Spiro. His work explores personal AI, long-term memory, and how systems use an understanding of a person.</p><a href="/">About the author →</a></div></article></div>
+<section class="related-writing" aria-labelledby="related-title"><p class="eyebrow">Keep reading</p><h2 id="related-title">Connected questions</h2><div class="related-grid"><article class="writing-entry">
+<p class="writing-meta">Personal AI <span>· 3 min read</span></p>
+<h3><a href="/writing/dont-make-me-teach-my-ai-twice/">Don’t Make Me Teach My AI Twice</a></h3>
+<p class="writing-summary">The value of memory appears in the next result, when an old correction saves new work.</p></article><article class="writing-entry">
+<p class="writing-meta">Personal AI <span>· 3 min read</span></p>
+<h3><a href="/writing/the-right-to-change-your-mind/">Personal AI Needs a Right to Change Your Mind</a></h3>
+<p class="writing-summary">Long-term understanding should make it easier to revise an arrangement, not harder to escape an old profile.</p></article></div></section></main><footer class="wrap writing-footer"><p>© 2026 Zhihe (Bob) Zhao</p><nav aria-label="Footer"><a href="/writing/">All writing</a><a href="/writing/feed.xml">RSS</a><a href="/#contact">Get in touch</a><a href="#top">Back to top ↑</a></nav></footer></body></html>

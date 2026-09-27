@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Did Memory Actually Change the Decision? — Zhihe (Bob) Zhao</title>
+<meta name="description" content="A practical way to distinguish memory access, behavioral influence, and user value.">
+<meta name="author" content="Zhihe (Bob) Zhao"><meta name="theme-color" content="#f8f7f3">
+<link rel="canonical" href="https://bob-zhihe.github.io/writing/did-memory-change-the-decision/"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/writing.css">
+<link rel="alternate" type="application/rss+xml" title="Zhihe Zhao — Writing" href="/writing/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Did Memory Actually Change the Decision?"><meta property="og:description" content="A practical way to distinguish memory access, behavioral influence, and user value.">
+<meta property="og:url" content="https://bob-zhihe.github.io/writing/did-memory-change-the-decision/"><meta property="og:site_name" content="Zhihe (Bob) Zhao">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Did Memory Actually Change the Decision?">
+<meta name="twitter:description" content="A practical way to distinguish memory access, behavioral influence, and user value."><meta property="article:published_time" content="2026-09-27">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Did Memory Actually Change the Decision?", "description": "A practical way to distinguish memory access, behavioral influence, and user value.", "author": {"@type": "Person", "name": "Zhihe (Bob) Zhao", "url": "https://bob-zhihe.github.io/"}, "datePublished": "2026-09-27", "dateModified": "2026-09-27", "mainEntityOfPage": "https://bob-zhihe.github.io/writing/did-memory-change-the-decision/", "inLanguage": "en", "articleSection": "Technical Notes"}</script>
+</head><body id="top"><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap header-inner">
+<a class="wordmark" href="/">Zhihe Zhao<span>Bob</span></a>
+<nav aria-label="Main navigation"><a href="/#work">Current work</a><a href="/writing/" aria-current="false">Writing</a><a href="/#featured">Research</a><a href="/#contact">Contact</a></nav>
+</div></header><main id="main" class="wrap article-main">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/writing/">Writing</a><span aria-hidden="true">/</span><a href="/writing/#technical-notes">Technical Notes</a></nav>
+<header class="article-header"><p class="eyebrow">Technical Notes</p><h1>Did Memory Actually Change the Decision?</h1>
+<p class="article-deck">A practical way to distinguish memory access, behavioral influence, and user value.</p>
+<p class="article-byline">Zhihe (Bob) Zhao <span>·</span> <time datetime="2026-09-27">September 27, 2026</time> <span>·</span> 4 min read</p></header>
+<div class="article-layout"><aside class="article-toc" aria-label="On this page"><p>In this article</p><div class="toc">
+<ul>
+<li><a href="#begin-with-an-observable-decision">Begin with an observable decision</a></li>
+<li><a href="#separate-the-evidence-layers">Separate the evidence layers</a></li>
+<li><a href="#change-one-thing-then-examine-the-consequences">Change one thing, then examine the consequences</a></li>
+<li><a href="#add-a-place-where-the-memory-should-not-help">Add a place where the memory should not help</a></li>
+<li><a href="#be-precise-about-the-conclusion">Be precise about the conclusion</a></li>
+</ul>
+</div>
+</aside>
+<article class="article-body" aria-label="Article text"><p>An agent retrieves a preference, includes its identifier in a trace, and produces a good answer. Did memory help?</p>
+<p>Not necessarily. The answer might have been the same without that preference. The agent might have read it and ignored it. It might have used it in a way that changed the output but made the result worse.</p>
+<p>For personal AI, I find it useful to separate three questions: was memory available, did it affect behavior, and was that effect useful? This note proposes a way to investigate them. The examples are synthetic; they are not a report of a completed benchmark.</p>
+<h2 id="begin-with-an-observable-decision">Begin with an observable decision</h2>
+<p>Consider a fictional task: select one moment from a day's notes for a personal update. The notes contain a routine status meeting, a successful dinner experiment, and a conversation about a difficult career choice.</p>
+<p>A previous correction says: “For these updates, I would rather hear about everyday life than routine work.”</p>
+<p>The expected effect needs definition before looking at the output. Does the preference change which candidate receives attention, which moment is selected, or only the wording? The career conversation makes a useful boundary case: it happened at work, but its subject may be personal.</p>
+<p>A broad instruction to “be more personal” leaves too much room for a post-hoc explanation of any result. A narrower question is: does this feedback reduce selection of routine status updates without inventing a personal meaning for every work event?</p>
+<h2 id="separate-the-evidence-layers">Separate the evidence layers</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>What to inspect</th>
+<th>What it does not establish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Available</td>
+<td>The memory was accessible to this run</td>
+<td>The agent read it</td>
+</tr>
+<tr>
+<td>Accessed</td>
+<td>The actual payload or tool result contained it</td>
+<td>It influenced a decision</td>
+</tr>
+<tr>
+<td>Behavior changed</td>
+<td>A controlled comparison changes selection or expression</td>
+<td>The change was desirable</td>
+</tr>
+<tr>
+<td>Useful</td>
+<td>A suitable evaluator prefers the changed result</td>
+<td>The effect generalizes</td>
+</tr>
+</tbody>
+</table></div>
+<p>A model-written explanation is useful debugging material, but it is not independent proof of the cause of its own decision. Likewise, finding a memory identifier in a final answer shows a citation, not a counterfactual effect.</p>
+<p>The <a href="https://www.w3.org/TR/prov-overview/">W3C PROV model</a> provides a vocabulary for provenance relationships. Provenance helps establish where something came from. The causal question—what would have happened without it—still requires a comparison.</p>
+<h2 id="change-one-thing-then-examine-the-consequences">Change one thing, then examine the consequences</h2>
+<p>For the synthetic example, prepare two conditions. Both receive the same notes, task, prompt, tools, model configuration, and permitted time window. One receives the scoped preference; the other does not. Keep the inference budget the same, while recording actual resource use.</p>
+<p>Before running, define the candidate labels and the outcomes you will inspect. Save the actual inputs, tool results, selections, and outputs. Repeat both conditions rather than trusting one attractive pair.</p>
+<pre><code class="language-text">Same current material + same task + same execution conditions
+    A: without the selected memory
+    B: with the selected memory
+Compare: attention evidence, selections, factual fidelity, user value
+</code></pre>
+<p>This diagram describes an experimental comparison, not a required production pipeline. The production agent may choose its own retrieval strategy. The experiment temporarily controls what is necessary to answer its question.</p>
+<p>If selections differ, inspect whether the intended distinction explains the difference. Did B select dinner? Did it recast a routine meeting as a moving personal revelation? Did it omit a meaningful career conversation simply because the word “work” appeared?</p>
+<h2 id="add-a-place-where-the-memory-should-not-help">Add a place where the memory should not help</h2>
+<p>Now change the task to a work handover. The same personal-update preference should not suppress essential project information.</p>
+<p>This checks scope. A system that obeys a preference everywhere can look strongly personalized while being poorly calibrated. Also include a day with no eligible everyday-life moment. The correct response is not to manufacture one to satisfy the preference.</p>
+<p>A useful report separates factual violations, selection changes, user preference, and cost. Do not average an invented event into an otherwise strong writing score.</p>
+<h2 id="be-precise-about-the-conclusion">Be precise about the conclusion</h2>
+<p>A difference in one pair is an observation. Repeated directional differences under controlled conditions support a claim about that intervention in that setting. Better user judgments support a product claim within the evaluated sample. None alone proves general memory superiority across users, tasks, or models.</p>
+<p>Even controlled results need care: removing memory changes the context length and may change attention for reasons other than its meaning. A follow-up comparison can replace it with similarly sized irrelevant material, provided that control is planned and reported.</p>
+<p>The goal is not to insist that every remembered detail visibly alters every answer. Often the right effect is no change. The goal is to know when memory mattered, what it changed, and whether the person was better served.</p>
+<div class="article-author"><p><strong>Zhihe (Bob) Zhao</strong> is the founder of AxiomsTen, building Spiro. His work explores personal AI, long-term memory, and how systems use an understanding of a person.</p><a href="/">About the author →</a></div></article></div>
+<section class="related-writing" aria-labelledby="related-title"><p class="eyebrow">Keep reading</p><h2 id="related-title">Connected questions</h2><div class="related-grid"><article class="writing-entry">
+<p class="writing-meta">Personal AI <span>· 3 min read</span></p>
+<h3><a href="/writing/dont-make-me-teach-my-ai-twice/">Don’t Make Me Teach My AI Twice</a></h3>
+<p class="writing-summary">The value of memory appears in the next result, when an old correction saves new work.</p></article><article class="writing-entry">
+<p class="writing-meta">Technical Notes <span>· 4 min read</span></p>
+<h3><a href="/writing/corrections-are-not-global-preferences/">A User Correction Is Not a Global Preference</a></h3>
+<p class="writing-summary">Feedback needs an object, a scope, and a way to check whether the next behavior improved.</p></article></div></section></main><footer class="wrap writing-footer"><p>© 2026 Zhihe (Bob) Zhao</p><nav aria-label="Footer"><a href="/writing/">All writing</a><a href="/writing/feed.xml">RSS</a><a href="/#contact">Get in touch</a><a href="#top">Back to top ↑</a></nav></footer></body></html>

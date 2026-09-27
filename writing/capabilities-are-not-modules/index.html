@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Capabilities Don’t Have to Be Modules — Zhihe (Bob) Zhao</title>
+<meta name="description" content="Fix the boundaries that must hold. Let task structure earn its complexity.">
+<meta name="author" content="Zhihe (Bob) Zhao"><meta name="theme-color" content="#f8f7f3">
+<link rel="canonical" href="https://bob-zhihe.github.io/writing/capabilities-are-not-modules/"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/writing.css">
+<link rel="alternate" type="application/rss+xml" title="Zhihe Zhao — Writing" href="/writing/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agent Capabilities Don’t Have to Be Modules"><meta property="og:description" content="Fix the boundaries that must hold. Let task structure earn its complexity.">
+<meta property="og:url" content="https://bob-zhihe.github.io/writing/capabilities-are-not-modules/"><meta property="og:site_name" content="Zhihe (Bob) Zhao">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Agent Capabilities Don’t Have to Be Modules">
+<meta name="twitter:description" content="Fix the boundaries that must hold. Let task structure earn its complexity."><meta property="article:published_time" content="2026-09-27">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Agent Capabilities Don’t Have to Be Modules", "description": "Fix the boundaries that must hold. Let task structure earn its complexity.", "author": {"@type": "Person", "name": "Zhihe (Bob) Zhao", "url": "https://bob-zhihe.github.io/"}, "datePublished": "2026-09-27", "dateModified": "2026-09-27", "mainEntityOfPage": "https://bob-zhihe.github.io/writing/capabilities-are-not-modules/", "inLanguage": "en", "articleSection": "Technical Notes"}</script>
+</head><body id="top"><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap header-inner">
+<a class="wordmark" href="/">Zhihe Zhao<span>Bob</span></a>
+<nav aria-label="Main navigation"><a href="/#work">Current work</a><a href="/writing/" aria-current="false">Writing</a><a href="/#featured">Research</a><a href="/#contact">Contact</a></nav>
+</div></header><main id="main" class="wrap article-main">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/writing/">Writing</a><span aria-hidden="true">/</span><a href="/writing/#technical-notes">Technical Notes</a></nav>
+<header class="article-header"><p class="eyebrow">Technical Notes</p><h1>Agent Capabilities Don’t Have to Be Modules</h1>
+<p class="article-deck">Fix the boundaries that must hold. Let task structure earn its complexity.</p>
+<p class="article-byline">Zhihe (Bob) Zhao <span>·</span> <time datetime="2026-09-27">September 27, 2026</time> <span>·</span> 4 min read</p></header>
+<div class="article-layout"><aside class="article-toc" aria-label="On this page"><p>In this article</p><div class="toc">
+<ul>
+<li><a href="#a-boundary-can-outlive-a-workflow">A boundary can outlive a workflow</a></li>
+<li><a href="#what-i-would-make-explicit">What I would make explicit</a></li>
+<li><a href="#begin-with-one-real-task">Begin with one real task</a></li>
+<li><a href="#a-reusable-capability-needs-more-than-a-name">A reusable capability needs more than a name</a></li>
+<li><a href="#keep-the-thin-layer-honest">Keep the thin layer honest</a></li>
+</ul>
+</div>
+</aside>
+<article class="article-body" aria-label="Article text"><p>It is easy to turn an agent architecture into a row of boxes: retrieve, analyze, plan, write, review. Once a box has a name, it begins to look like a necessary component.</p>
+<p>But a capability and a physical module are different things. A task may require access to historical evidence without requiring a separate retrieval agent. Another may need several rounds of search. A third may legitimately use only the current material.</p>
+<p>My design preference is to make responsibilities and boundaries explicit while allowing the execution shape to vary. This is an engineering position, not a claim that flexible topology is always faster or more reliable.</p>
+<h2 id="a-boundary-can-outlive-a-workflow">A boundary can outlive a workflow</h2>
+<p>Suppose two tasks share information about the same person. One writes a short family update. The other prepares a private work briefing.</p>
+<p>They may share requirements: use only permitted sources, do not look into the future, preserve the subject of a statement, and report failures honestly. They need not share the same sequence of reasoning steps or the same amount of context.</p>
+<p>The family update may benefit from careful recipient context. The briefing may need repeated retrieval and comparison. Making both pass through an identical series of agents can add overhead without solving either task's hardest problem.</p>
+<p>The reusable object may be an evidence-access interface or a permission check, rather than an entire reasoning pipeline.</p>
+<h2 id="what-i-would-make-explicit">What I would make explicit</h2>
+<div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Shared responsibility</th>
+<th>Task-dependent choice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which sources may be accessed</td>
+<td>Which permitted source to inspect next</td>
+</tr>
+<tr>
+<td>The decision's time boundary</td>
+<td>Whether more evidence is worth seeking</td>
+</tr>
+<tr>
+<td>The allowed actions and budget</td>
+<td>How to compare eligible candidates</td>
+</tr>
+<tr>
+<td>Evidence and output records</td>
+<td>How much context to use</td>
+</tr>
+<tr>
+<td>Truthful completion and failure reporting</td>
+<td>Whether to express an optional observation</td>
+</tr>
+</tbody>
+</table></div>
+<p>This division is a starting point. Some tasks need stricter constraints on sequence, and some judgments cannot be reliably delegated. The point is to justify those constraints by the task rather than by the name of a box.</p>
+<h2 id="begin-with-one-real-task">Begin with one real task</h2>
+<p>I would start by giving an agent the tools, evidence, and boundaries needed to attempt a concrete task. Then inspect the earliest actual failure.</p>
+<p>If it cannot access a needed source, fix access. If it misinterprets a sentence, a new orchestration layer may not help. If it repeatedly forgets a mechanical constraint, deterministic enforcement may be appropriate. Those are different repairs.</p>
+<p>A behavior appearing once is not a reason to build a permanent module around it. First ask whether removing or replacing that behavior changes the result. Then ask whether its contribution survives a different date, task, or user.</p>
+<p>There is a cost to waiting: duplicated local solutions and less tidy diagrams. There is also a cost to extracting too early: every future task inherits assumptions that were never tested outside the first one.</p>
+<h2 id="a-reusable-capability-needs-more-than-a-name">A reusable capability needs more than a name</h2>
+<p>Before treating a capability as reusable, I want to know its inputs, permissions, observed contribution, known failures, resource needs, and conditions under which skipping it is reasonable.</p>
+<p>“Personal understanding” is too broad to be a useful contract. “Can retrieve source passages for a disputed relationship claim under the current user's permission boundary” is more concrete. Whether it should be a tool, an inlined operation, or a separate agent remains an implementation choice.</p>
+<p>Repeated use does not establish independent value either. A component can appear in every successful run because every run was forced to include it.</p>
+<h2 id="keep-the-thin-layer-honest">Keep the thin layer honest</h2>
+<p>A small shared runtime can still become a hidden product designer. It happens when seemingly mechanical checks begin deciding what counts as an interesting life event or the right emotional tone for everyone.</p>
+<p>Those judgments deserve visibility. A validator can check whether a source exists. It cannot infer from that fact alone whether a person wants a message about it.</p>
+<p>I want the common layer to make task decisions inspectable and enforce boundaries we actually understand. I do not want its tidy interfaces to disguise untested judgments as universal rules.</p>
+<p>A useful architecture diagram shows who is responsible for what. It should not become a script that every future agent is required to perform.</p>
+<div class="article-author"><p><strong>Zhihe (Bob) Zhao</strong> is the founder of AxiomsTen, building Spiro. His work explores personal AI, long-term memory, and how systems use an understanding of a person.</p><a href="/">About the author →</a></div></article></div>
+<section class="related-writing" aria-labelledby="related-title"><p class="eyebrow">Keep reading</p><h2 id="related-title">Connected questions</h2><div class="related-grid"><article class="writing-entry">
+<p class="writing-meta">Technical Notes <span>· 4 min read</span></p>
+<h3><a href="/writing/relevant-does-not-mean-usable/">Relevant Doesn’t Mean Usable: Context for Personal AI</a></h3>
+<p class="writing-summary">Context selection has to consider time, uncertainty, purpose, and the person receiving the result.</p></article><article class="writing-entry">
+<p class="writing-meta">Technical Notes <span>· 4 min read</span></p>
+<h3><a href="/writing/did-memory-change-the-decision/">Did Memory Actually Change the Decision?</a></h3>
+<p class="writing-summary">A practical way to distinguish memory access, behavioral influence, and user value.</p></article></div></section></main><footer class="wrap writing-footer"><p>© 2026 Zhihe (Bob) Zhao</p><nav aria-label="Footer"><a href="/writing/">All writing</a><a href="/writing/feed.xml">RSS</a><a href="/#contact">Get in touch</a><a href="#top">Back to top ↑</a></nav></footer></body></html>
