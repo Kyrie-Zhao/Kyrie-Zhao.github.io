@@ -155,7 +155,7 @@ def head(title, description, path, locale, article=None):
 <link rel="canonical" href="{url}">
 {alternate_links(path)}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/writing.css">
+<link rel="stylesheet" href="/assets/site.css?v=0f0f083"><link rel="stylesheet" href="/assets/writing.css">
 <link rel="alternate" type="application/rss+xml" title="{cfg['author']} — {cfg['writing']}" href="{prefix}/writing/feed.xml">
 <meta property="og:type" content="{'article' if article else 'website'}">
 <meta property="og:title" content="{esc(title, quote=True)}"><meta property="og:description" content="{esc(description, quote=True)}">

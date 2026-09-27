@@ -24,6 +24,8 @@ For coverage, distinguish founder profiles, official company features, product n
 
 Before deployment, check desktop and mobile layouts, keyboard navigation, internal anchors, local assets, structured metadata, and publication links. Update `sitemap.xml` and the footer date only for substantive content changes.
 
+When changing shared CSS, update its version query in both homepages and the build script's `head()` output, then rebuild. This prevents returning readers from seeing new markup with cached styles.
+
 `index.json`, `index.xml`, and `index.webmanifest` are maintained compatibility metadata for old search/feed/bookmark clients. Update their basic profile wording when the public identity changes; they no longer contain inherited template biographies.
 
 ## Writing collection
