@@ -210,6 +210,7 @@ nav a:hover {
 .portrait img {
   width:232px;
   aspect-ratio:296/356;
+  object-position:center 78%;
   object-fit:cover;
   border-radius:3px
 }

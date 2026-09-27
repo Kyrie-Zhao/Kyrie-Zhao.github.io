@@ -16,7 +16,7 @@ Founder and researcher building personal AI. Lead with the current question and 
 | Earlier ThingX co-founder role; MS at Duke; undergraduate degree; Huawei and early experience | Existing public homepage and October 2023 CV, retained in this repository |
 | Research titles, authors, venues, and SenSys awards | https://aiot.ie.cuhk.edu.hk/publications/ |
 | Miriam abstract and preprint | https://arxiv.org/abs/2307.04339 |
-| Portrait | https://www.ie.cuhk.edu.hk/wp-content/uploads/2025/01/ZHAO_Zhihe.jpg |
+| Portrait | Author-selected `homepage.jpg`, supplied locally and approved for publication on 27 September 2026; optimized as `assets/images/bob-homepage.jpg`. |
 
 ## Editorial boundaries
 
@@ -36,3 +36,7 @@ The repository contained a generated Wowchemy/Hugo site, not its full source pro
 ## Legacy metadata
 
 The inherited `index.json` included unrelated template biography text (a different lab, supervisor, and undergraduate university). It has been replaced with the actual current biography. The old RSS feed and web manifest have also been updated rather than continuing to advertise the stale template identity. Existing PDF and research asset files have not been removed.
+
+## Account migration
+
+On 27 September 2026, the author authorized renaming the GitHub account to `bob-zhihe` and the Pages repository to `bob-zhihe.github.io`. Current site metadata and links use the new address; original provenance above is retained. The first-screen credentials now highlight the PhD and Forbes recognition; SenSys poster recognition remains in research and awards.

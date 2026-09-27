@@ -1,6 +1,6 @@
 # Zhihe (Bob) Zhao — Personal homepage
 
-A small, accessible static site for <https://kyrie-zhao.github.io/>. No build step, package installation, JavaScript runtime, external fonts, analytics, or third-party scripts are required.
+A small, accessible static site for <https://bob-zhihe.github.io/>. No build step, package installation, JavaScript runtime, external fonts, analytics, or third-party scripts are required.
 
 ## Edit and preview
 

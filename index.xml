@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Zhihe (Bob) Zhao</title>
-    <link>https://kyrie-zhao.github.io/</link>
-    <atom:link href="https://kyrie-zhao.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <link>https://bob-zhihe.github.io/</link>
+    <atom:link href="https://bob-zhihe.github.io/index.xml" rel="self" type="application/rss+xml"/>
     <description>Personal AI, memory, and intelligent systems.</description>
     <language>en</language>
     <lastBuildDate>Sun, 27 Sep 2026 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Personal homepage updated — September 2026</title>
-      <link>https://kyrie-zhao.github.io/</link>
+      <link>https://bob-zhihe.github.io/</link>
       <guid isPermaLink="false">homepage-refresh-2026-09-27</guid>
       <pubDate>Sun, 27 Sep 2026 00:00:00 +0000</pubDate>
       <description>Current work at AxiomsTen and Spiro, selected research, and updated background.</description>
