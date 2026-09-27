@@ -1,10 +1,11 @@
 # Zhihe (Bob) Zhao — Personal homepage
 
-A small, accessible static site for <https://bob-zhihe.github.io/>. GitHub Pages serves the checked-in HTML directly. Visitors need no JavaScript. The writing collection is generated locally from Markdown; no external fonts, analytics, or third-party scripts are used.
+A small, accessible bilingual static site for <https://bob-zhihe.github.io/>. English lives at `/`; Simplified Chinese lives at `/zh/`. GitHub Pages serves the checked-in HTML directly. Visitors need no JavaScript. The writing collection is generated locally from Markdown; no external fonts, analytics, or third-party scripts are used.
 
 ## Edit and preview
 
 - `index.html`: biography, current work, previously built products, publications, background, recognition, selected coverage, and contact.
+- `zh/index.html`: the complete Chinese homepage, maintained alongside the English page.
 - `assets/site.css`: responsive layout, typography, and print styles.
 - `assets/images/bob-homepage.jpg`: author-selected portrait.
 - `docs/content-sources.md`: public sources and editorial decisions.
@@ -28,10 +29,19 @@ Before deployment, check desktop and mobile layouts, keyboard navigation, intern
 
 - Edit full English articles in `content/writing/*.md`.
 - Edit titles, summaries, categories, dates, related articles, and order in `content/writing/catalog.json`.
+- Edit full Chinese translations in `content/writing/zh/*.md` and localized titles, summaries, and publication dates in `content/writing/zh/catalog.json`. Slugs pair the editions; category membership, related articles, and order come from the English catalog.
 - Install the local rendering dependency with `python3 -m pip install -r requirements-writing.txt`.
 - Run `python3 scripts/build_writing.py`. Commit both sources and generated output.
-- Generated output: `writing/`, the marked Writing section in `index.html`, `sitemap.xml`, `index.json`, and RSS feeds. Do not hand-edit generated article HTML.
+- Generated output: `writing/`, `zh/writing/`, marked article highlights and language links in both homepages, the bilingual `sitemap.xml`, locale-specific search indexes, and RSS feeds. Do not hand-edit generated article HTML.
 - `assets/writing.css` extends the existing design for the directory, article typography, responsive tables, and navigation.
 - The public collection contains complete English essays and technical notes, not internal whitepapers or patent disclosures. Synthetic examples and proposed methods must remain labeled. Do not convert design proposals into measured results when editing.
 
 The root RSS endpoint now mirrors the writing feed so existing subscribers receive new articles. Historic publication assets remain unchanged.
+
+## Language editions
+
+The header's `EN / 中文` links switch to the same page or article in the other language. All ordinary Chinese navigation stays under `/zh/`. Keep each edition's own canonical URL and reciprocal `hreflang` links; English is the `x-default`. The language is chosen explicitly, with no automatic redirects, translation service, browser storage, or client-side state.
+
+The build requires matching article slugs and nonempty source files in both languages. New articles need both editions before publication. Chinese reading estimates count Chinese characters as well as Latin words. Publication dates describe each edition's release; the Chinese launch is 28 September 2026. Update `UPDATED` in the build script when publishing substantive changes.
+
+Translate arguments, examples, uncertainty, and source boundaries in full. Write natural Chinese rather than matching English word order. Keep original paper titles, product names, and source links where they identify external work. Do not turn proposals or hypothetical examples into measured results.

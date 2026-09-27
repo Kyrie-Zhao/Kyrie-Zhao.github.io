@@ -96,6 +96,7 @@ strong {
 }
 
 .header-inner {
+  position:relative;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -128,6 +129,72 @@ nav a {
   text-decoration:none;
   color:var(--muted);
   padding-block:10px
+}
+
+/* The locale is explicit in each URL; switching languages needs no script. */
+.header-controls {
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:8px 28px
+}
+
+.language-switch {
+  flex-wrap:nowrap;
+  gap:4px;
+  padding-left:18px;
+  border-left:1px solid var(--line)
+}
+
+.language-switch a {
+  padding:5px 8px;
+  border-radius:3px;
+  font-size:14px;
+  white-space:nowrap
+}
+
+.language-switch a[aria-current="page"] {
+  color:var(--ink);
+  background:var(--pale);
+  font-weight:600
+}
+
+:lang(zh-CN) {
+  --serif:Georgia,'Songti SC','Noto Serif CJK SC',STSong,serif;
+  --sans:Inter,-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif
+}
+
+html:lang(zh-CN) body {
+  line-height:1.9;
+  line-break:strict
+}
+
+html:lang(zh-CN) :is(h1,h2,h3,h4,.statement,.hero-title) {
+  letter-spacing:0;
+  line-height:1.5
+}
+
+html:lang(zh-CN) .hero-intro {
+  line-height:1.95
+}
+
+@media(max-width:640px) {
+  .header-controls {
+    width:100%;
+    justify-content:space-between;
+    gap:6px 18px
+  }
+  .language-switch {
+    position:absolute;
+    top:18px;
+    right:0;
+    padding-left:0;
+    border-left:0
+  }
+  .header-inner > .wordmark {
+    padding-right:100px
+  }
 }
 
 nav a:hover {

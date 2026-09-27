@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>智能体需要某种能力，不等于需要一个独立模块 — 赵之赫（Bob）</title>
+<meta name="description" content="守住必须遵守的边界，再让具体任务决定执行结构有多复杂。">
+<meta name="author" content="赵之赫（Bob）"><meta name="theme-color" content="#f8f7f3">
+<link rel="canonical" href="https://bob-zhihe.github.io/zh/writing/capabilities-are-not-modules/">
+<link rel="alternate" hreflang="en" href="https://bob-zhihe.github.io/writing/capabilities-are-not-modules/">
+<link rel="alternate" hreflang="zh-CN" href="https://bob-zhihe.github.io/zh/writing/capabilities-are-not-modules/">
+<link rel="alternate" hreflang="x-default" href="https://bob-zhihe.github.io/writing/capabilities-are-not-modules/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/writing.css">
+<link rel="alternate" type="application/rss+xml" title="赵之赫（Bob） — 文章" href="/zh/writing/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智能体需要某种能力，不等于需要一个独立模块"><meta property="og:description" content="守住必须遵守的边界，再让具体任务决定执行结构有多复杂。">
+<meta property="og:url" content="https://bob-zhihe.github.io/zh/writing/capabilities-are-not-modules/"><meta property="og:site_name" content="赵之赫（Bob）">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="智能体需要某种能力，不等于需要一个独立模块">
+<meta name="twitter:description" content="守住必须遵守的边界，再让具体任务决定执行结构有多复杂。"><meta property="article:published_time" content="2026-09-28">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "智能体需要某种能力，不等于需要一个独立模块", "description": "守住必须遵守的边界，再让具体任务决定执行结构有多复杂。", "author": {"@type": "Person", "name": "Zhihe (Bob) Zhao", "url": "https://bob-zhihe.github.io/"}, "datePublished": "2026-09-28", "dateModified": "2026-09-28", "mainEntityOfPage": "https://bob-zhihe.github.io/zh/writing/capabilities-are-not-modules/", "inLanguage": "zh-CN", "articleSection": "技术笔记", "translationOfWork": {"@type": "BlogPosting", "@id": "https://bob-zhihe.github.io/writing/capabilities-are-not-modules/", "inLanguage": "en"}}</script>
+</head><body id="top"><a class="skip-link" href="#main">跳转到正文</a>
+<header class="site-header"><div class="wrap header-inner">
+<a class="wordmark" href="/zh/">赵之赫<span lang="en">Bob</span></a>
+<div class="header-controls"><nav aria-label="主导航"><a href="/zh/#work">现在在做</a><a href="/zh/writing/">文章</a><a href="/zh/#featured">研究</a><a href="/zh/#contact">联系</a></nav>
+<nav class="language-switch" aria-label="语言"><a href="/writing/capabilities-are-not-modules/" lang="en" hreflang="en">EN</a><a href="/zh/writing/capabilities-are-not-modules/" lang="zh-CN" hreflang="zh-CN" aria-current="page">中文</a></nav></div></div></header><main id="main" class="wrap article-main">
+<nav class="breadcrumbs" aria-label="当前位置"><a href="/zh/writing/">文章</a><span aria-hidden="true">/</span><a href="/zh/writing/#technical-notes">技术笔记</a></nav>
+<header class="article-header"><p class="eyebrow">技术笔记</p><h1>智能体需要某种能力，不等于需要一个独立模块</h1>
+<p class="article-deck">守住必须遵守的边界，再让具体任务决定执行结构有多复杂。</p>
+<p class="article-byline">赵之赫（Bob） <span>·</span> <time datetime="2026-09-28">2026 年 9 月 28 日</time> <span>·</span> 阅读约 4 分钟</p></header>
+<div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>本文目录</p><div class="toc">
+<ul>
+<li><a href="#执行流程会变有些边界不变">执行流程会变，有些边界不变</a></li>
+<li><a href="#哪些需要明确哪些可以随任务变化">哪些需要明确，哪些可以随任务变化</a></li>
+<li><a href="#从一个真实任务开始">从一个真实任务开始</a></li>
+<li><a href="#可复用的能力不能只有一个名字">可复用的能力，不能只有一个名字</a></li>
+<li><a href="#公共层再薄也可能藏着产品判断">公共层再薄，也可能藏着产品判断</a></li>
+</ul>
+</div>
+</aside>
+<article class="article-body" aria-label="文章正文"><p>画智能体架构图很容易变成排方框：检索、分析、规划、写作、检查。一个方框一旦有了名字，就开始显得不可或缺。</p>
+<p>但一种能力和一个独立模块，是两回事。某个任务需要访问历史证据，未必就需要一个单独的检索智能体；另一个任务可能要反复搜索；还有的任务，只使用当前材料也完全合理。</p>
+<p>我的设计倾向是：把职责和边界说清楚，允许执行方式因任务而异。这是一种工程取舍，并不是说灵活的结构总会更快或更可靠。</p>
+<h2 id="执行流程会变有些边界不变">执行流程会变，有些边界不变</h2>
+<p>假设两个任务共用同一个人的信息。一个写给家人的简短近况，另一个准备私人工作简报。</p>
+<p>它们可能有相同的要求：只访问获准的来源，不偷看决策时刻之后的信息，不弄错一句话描述的是谁，如实报告失败。但它们不必采用相同的思考步骤，也不必得到同样多的上下文。</p>
+<p>家人近况可能更需要考虑收信人知道什么。工作简报可能需要多轮检索与比较。强迫两者经过同一串智能体，可能增加了开销，却没有解决各自最难的问题。</p>
+<p>真正值得复用的，也许是访问证据的接口或权限检查，而不是整套推理流程。</p>
+<h2 id="哪些需要明确哪些可以随任务变化">哪些需要明确，哪些可以随任务变化</h2>
+<div class="table-scroll" role="region" aria-label="对照表" tabindex="0"><table>
+<thead>
+<tr>
+<th>需要明确的共同责任</th>
+<th>取决于任务的选择</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可以访问哪些来源</td>
+<td>下一步查看哪个获准来源</td>
+</tr>
+<tr>
+<td>决策的信息时间边界</td>
+<td>是否值得继续寻找证据</td>
+</tr>
+<tr>
+<td>允许的行动与预算</td>
+<td>如何比较合格候选</td>
+</tr>
+<tr>
+<td>保留证据与输出记录</td>
+<td>使用多少上下文</td>
+</tr>
+<tr>
+<td>如实报告完成与失败</td>
+<td>是否表达一个非必需的观察</td>
+</tr>
+</tbody>
+</table></div>
+<p>这只是一个起点。有些任务确实需要更严格的顺序约束，有些判断也不能放心交给智能体。重点是：这些限制应当由任务需要来解释，不能仅仅因为架构图上有这个方框。</p>
+<h2 id="从一个真实任务开始">从一个真实任务开始</h2>
+<p>我会先给智能体完成某个具体任务所需的工具、证据与边界，让它尝试，然后检查最早出现的真实失败。</p>
+<p>如果它访问不到必要来源，就解决访问问题。如果它理解错了一句话，再加一层编排未必有用。如果它反复漏掉一个机械性约束，交给确定性代码强制执行可能更合适。这些问题需要不同的修复。</p>
+<p>一种行为出现过一次，不足以成为围绕它建设永久模块的理由。先问，拿掉或替换这种行为，结果会不会改变。再问，换一个日期、任务或用户，它的作用还在不在。</p>
+<p>晚一点抽象是有代价的：一些局部实现会重复，架构图也没那么整齐。但过早抽象也有代价：之后所有任务，都要继承那些只在第一个任务里成立、却从未在别处验证过的假设。</p>
+<h2 id="可复用的能力不能只有一个名字">可复用的能力，不能只有一个名字</h2>
+<p>在把某项能力当作可复用资源之前，我想知道它需要什么输入和权限，观察到过什么贡献，有哪些已知失败，需要多少资源，以及什么情况下跳过它是合理的。</p>
+<p>“理解用户”太宽泛，难以成为可执行的约定。“在当前用户的权限范围内，为一个存在争议的关系判断找到原始段落”，就具体得多。至于它应该实现成工具、嵌入某个步骤，还是交给独立智能体，仍然是实现上的选择。</p>
+<p>反复使用，也不等于独立价值已经成立。一个组件可能出现在每次成功运行里，只是因为每次运行都被强制要求包含它。</p>
+<h2 id="公共层再薄也可能藏着产品判断">公共层再薄，也可能藏着产品判断</h2>
+<p>一个很小的公共运行层，也可能悄悄替产品作决定。比如，一项看似机械的检查，开始规定什么才算有意思的生活事件，或所有人都应该收到什么情绪浓度的文字。</p>
+<p>这些判断应该被明确摆出来。校验器能检查来源是否存在，但不能仅凭来源存在，就断定用户希望收到关于这件事的消息。</p>
+<p>我希望公共层让任务中的决定可以被检查，并守住那些我们确实理解的边界。不能因为接口整齐，就把尚未验证的判断包装成通用规则。</p>
+<p>一张有用的架构图，应该说清楚谁负责什么。它不应该变成所有后续智能体都必须照演的剧本。</p>
+<div class="article-author"><p><strong>赵之赫（Bob）</strong>是 AxiomsTen 创始人，正在打造 Spiro。他关注个人 AI、长期记忆，以及系统如何将对一个人的理解用在具体事情上。</p><a href="/zh/">关于作者 →</a></div></article></div>
+<section class="related-writing" aria-labelledby="related-title"><p class="eyebrow">继续阅读</p><h2 id="related-title">也许你还想看</h2><div class="related-grid"><article class="writing-entry">
+<p class="writing-meta">技术笔记 <span>· 阅读约 4 分钟</span></p>
+<h3><a href="/zh/writing/relevant-does-not-mean-usable/">相关，不等于可以用：个人 AI 的上下文选择</a></h3>
+<p class="writing-summary">选择上下文时，还要考虑时间、不确定性、使用目的，以及谁会收到结果。</p></article><article class="writing-entry">
+<p class="writing-meta">技术笔记 <span>· 阅读约 5 分钟</span></p>
+<h3><a href="/zh/writing/did-memory-change-the-decision/">记忆真的改变了这次决定吗？</a></h3>
+<p class="writing-summary">分清记忆被读到、行为受影响，以及这种影响对用户有用，是三个不同的问题。</p></article></div></section></main><footer class="wrap writing-footer"><p>© 2026 赵之赫（Bob）</p><nav aria-label="页尾导航"><a href="/zh/writing/">全部文章</a><a href="/zh/writing/feed.xml">RSS</a><a href="/zh/#contact">联系我</a><a href="#top">返回顶部 ↑</a></nav></footer></body></html>

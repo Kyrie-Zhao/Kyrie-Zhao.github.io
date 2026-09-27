@@ -65,3 +65,11 @@ The author approved adding the verified early-product history and coverage to th
 | AxiomsTen founder profile | [36Kr / Hard Tech, March 2026](https://eu.36kr.com/en/p/3729647028960903) | Earlier wearable-AI chapter; historical launch targets are not current product promises. |
 
 The homepage uses short editorial link labels, not purported verbatim headlines. It does not present press-release syndication (including Yahoo Finance / PR Newswire) as independent editorial coverage. A Tech in Asia interview is mentioned in the author's own LinkedIn post, but a published article has not been located, so it is not listed as verified coverage. Later Nuna coverage does not imply continued employment, ownership, or responsibility for subsequent launches. “World's first,” medical efficacy claims, and inferred commercial success are omitted.
+
+## Chinese edition — 28 September 2026
+
+The author requested and authorized a full Chinese homepage and complete professional translations of all 14 articles, with a language choice and publication to the same GitHub Pages repository. `/zh/` and `/zh/writing/` are full static editions, not summaries or an embedded automatic-translation service.
+
+Chinese sources preserve every article's section structure, examples, comparisons, references, and distinction between proposals and observed results. English sentence order is adapted where needed for natural Chinese prose. Original academic paper titles and proper names remain identifiable. Translation does not add new biographical claims or strengthen evidence. The Chinese article publication date is 28 September 2026; the English originals retain their 27 September publication date.
+
+Both editions use the same article slugs and reciprocal language links. Each has its own canonical URL, feed, search index, and localized interface. No visitor is redirected based on inferred nationality or browser language.

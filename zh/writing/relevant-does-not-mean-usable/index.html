@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>相关，不等于可以用：个人 AI 的上下文选择 — 赵之赫（Bob）</title>
+<meta name="description" content="选择上下文时，还要考虑时间、不确定性、使用目的，以及谁会收到结果。">
+<meta name="author" content="赵之赫（Bob）"><meta name="theme-color" content="#f8f7f3">
+<link rel="canonical" href="https://bob-zhihe.github.io/zh/writing/relevant-does-not-mean-usable/">
+<link rel="alternate" hreflang="en" href="https://bob-zhihe.github.io/writing/relevant-does-not-mean-usable/">
+<link rel="alternate" hreflang="zh-CN" href="https://bob-zhihe.github.io/zh/writing/relevant-does-not-mean-usable/">
+<link rel="alternate" hreflang="x-default" href="https://bob-zhihe.github.io/writing/relevant-does-not-mean-usable/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/writing.css">
+<link rel="alternate" type="application/rss+xml" title="赵之赫（Bob） — 文章" href="/zh/writing/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="相关，不等于可以用：个人 AI 的上下文选择"><meta property="og:description" content="选择上下文时，还要考虑时间、不确定性、使用目的，以及谁会收到结果。">
+<meta property="og:url" content="https://bob-zhihe.github.io/zh/writing/relevant-does-not-mean-usable/"><meta property="og:site_name" content="赵之赫（Bob）">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="相关，不等于可以用：个人 AI 的上下文选择">
+<meta name="twitter:description" content="选择上下文时，还要考虑时间、不确定性、使用目的，以及谁会收到结果。"><meta property="article:published_time" content="2026-09-28">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "相关，不等于可以用：个人 AI 的上下文选择", "description": "选择上下文时，还要考虑时间、不确定性、使用目的，以及谁会收到结果。", "author": {"@type": "Person", "name": "Zhihe (Bob) Zhao", "url": "https://bob-zhihe.github.io/"}, "datePublished": "2026-09-28", "dateModified": "2026-09-28", "mainEntityOfPage": "https://bob-zhihe.github.io/zh/writing/relevant-does-not-mean-usable/", "inLanguage": "zh-CN", "articleSection": "技术笔记", "translationOfWork": {"@type": "BlogPosting", "@id": "https://bob-zhihe.github.io/writing/relevant-does-not-mean-usable/", "inLanguage": "en"}}</script>
+</head><body id="top"><a class="skip-link" href="#main">跳转到正文</a>
+<header class="site-header"><div class="wrap header-inner">
+<a class="wordmark" href="/zh/">赵之赫<span lang="en">Bob</span></a>
+<div class="header-controls"><nav aria-label="主导航"><a href="/zh/#work">现在在做</a><a href="/zh/writing/">文章</a><a href="/zh/#featured">研究</a><a href="/zh/#contact">联系</a></nav>
+<nav class="language-switch" aria-label="语言"><a href="/writing/relevant-does-not-mean-usable/" lang="en" hreflang="en">EN</a><a href="/zh/writing/relevant-does-not-mean-usable/" lang="zh-CN" hreflang="zh-CN" aria-current="page">中文</a></nav></div></div></header><main id="main" class="wrap article-main">
+<nav class="breadcrumbs" aria-label="当前位置"><a href="/zh/writing/">文章</a><span aria-hidden="true">/</span><a href="/zh/writing/#technical-notes">技术笔记</a></nav>
+<header class="article-header"><p class="eyebrow">技术笔记</p><h1>相关，不等于可以用：个人 AI 的上下文选择</h1>
+<p class="article-deck">选择上下文时，还要考虑时间、不确定性、使用目的，以及谁会收到结果。</p>
+<p class="article-byline">赵之赫（Bob） <span>·</span> <time datetime="2026-09-28">2026 年 9 月 28 日</time> <span>·</span> 阅读约 4 分钟</p></header>
+<div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>本文目录</p><div class="toc">
+<ul>
+<li><a href="#信息进入上下文之前要问四个问题">信息进入上下文之前，要问四个问题</a></li>
+<li><a href="#过去的理解不能改写今天的意思">过去的理解，不能改写今天的意思</a></li>
+<li><a href="#任务不同需要的背景也不同">任务不同，需要的背景也不同</a></li>
+<li><a href="#上下文多一点少一点都需要验证">上下文多一点、少一点，都需要验证</a></li>
+<li><a href="#让上下文选择可以被检查">让上下文选择可以被检查</a></li>
+</ul>
+</div>
+</aside>
+<article class="article-body" aria-label="文章正文"><p>假设一个个人助手知道项目为什么延期。这段解释与进度汇报高度相关，但里面包含一位同事的隐私。</p>
+<p>即使检索完全正确，也不能据此决定把它写进草稿。</p>
+<p>个人 AI 绕不开这种区别。一条信息可能相关，却已经过时、尚不确定、讲的是别人，或不在获准的使用范围内。本文讨论上下文使用规则需要回答哪些问题，不是在提出一种新的检索算法，也不代表已有完整实现。</p>
+<h2 id="信息进入上下文之前要问四个问题">信息进入上下文之前，要问四个问题</h2>
+<p>我会把相关性、使用资格、证据性质和对外表达分开检查。</p>
+<div class="table-scroll" role="region" aria-label="对照表" tabindex="0"><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对当前任务有帮助吗？</td>
+<td>最近的一次纠正，针对的正是这类消息</td>
+</tr>
+<tr>
+<td>本次执行可以使用吗？</td>
+<td>用户允许为这个目的访问这个来源</td>
+</tr>
+<tr>
+<td>它能证明什么？</td>
+<td>当时讨论过一种可能，但尚未作出决定</td>
+</tr>
+<tr>
+<td>结果里可以说出来吗？</td>
+<td>私密细节未必适合放进给第三方的消息</td>
+</tr>
+</tbody>
+</table></div>
+<p>第三个问题不能只用一个置信度分数回答。“用户亲口说过”“助手推断出来”“原始材料有歧义”，是不同性质的依据。再自信的推断，也仍然是推断。</p>
+<p>最后一个区别同样需要谨慎：允许系统内部查看信息，本身也需要授权，不能把“只是内部使用”当成绕过披露限制的办法。如果这种内部使用没有得到许可，信息一开始就不该进入本次执行。</p>
+<h2 id="过去的理解不能改写今天的意思">过去的理解，不能改写今天的意思</h2>
+<p>假设旧画像里写着，这个人喜欢社交。但今天他明确说：“这次活动我不想去。”</p>
+<p>如果他愿意被追问，历史背景也许有助于助手提出一个好问题。但它不能把当前的拒绝变成同意。“他通常喜欢这类活动”和“他答应参加了”，是两回事。</p>
+<p>时间边界需要双向考虑。评估智能体当时能知道什么，不能把后来才收到的纠正提前给它；决定现在怎么做，也不能让早期判断自动压过后来明确的更新。</p>
+<p>一个回放历史的演示，如果让系统提前知道未来，个性化效果就可能显得远好于它在当时真正能做到的程度。</p>
+<h2 id="任务不同需要的背景也不同">任务不同，需要的背景也不同</h2>
+<p>私人工作简报和给家人的近况，可以讲同一件事，却需要不同的上下文。同事也许已经认识参与者，父母则可能需要一句人物介绍。两者都未必需要整段历史。</p>
+<p>任务应该影响选什么材料、怎么表达，却不应该悄悄改写系统对这个人的基础理解。</p>
+<p>例如，用户希望给家人的消息轻松一些，不能据此认定他不喜欢严肃谈话。这是对某类沟通的要求，有其适用范围；这个范围本身有时也需要进一步确认。</p>
+<h2 id="上下文多一点少一点都需要验证">上下文多一点、少一点，都需要验证</h2>
+<p>人们很容易把“最少上下文”当成目标。但少掉一句限定，就可能把角色扮演变成看似真实的自述。提供全部获准历史，也许保住了那句话，却又把它埋进几千句其他话里。</p>
+<p>上下文的长度本身不能决定谁更好。有用的比较应该检查：各组实际提供了什么信息，智能体怎么使用，花了多少资源，又出现了哪些错误。</p>
+<p>检索、长上下文、直接查看原始来源、面向任务的摘要，都是可选策略。应该选哪一种，取决于任务和证据。把准备上下文的过程称作“编译”，既不意味着检索已经过时，也不意味着必须设置一个固定的编译模块。</p>
+<h2 id="让上下文选择可以被检查">让上下文选择可以被检查</h2>
+<p>在一个假设例子中，检查者应当能看到当前指令、历史判断及其时间和来源、获准的用途，以及最终输出。随后只改变一个条件：换收信人、撤回授权，或加入当前的明确纠正。</p>
+<p>该变的行为变了吗？无关行为是否保持正常？能否根据本次执行实际收到的材料，解释最后的结果？</p>
+<p><a href="https://langchain-ai.github.io/langmem/concepts/conceptual_guide/">LangMem 的概念指南</a>介绍了如何组织和更新持久记忆，可以作为背景阅读。我在这里关心的是下一道边界：某一次具体执行，可以拿这些记忆做什么。</p>
+<p>真正有用的问题，不是助手知道我多少事，而是它正在使用的信息，是否适合这个决定、这些条件，以及眼前这位接收者。</p>
+<div class="article-author"><p><strong>赵之赫（Bob）</strong>是 AxiomsTen 创始人，正在打造 Spiro。他关注个人 AI、长期记忆，以及系统如何将对一个人的理解用在具体事情上。</p><a href="/zh/">关于作者 →</a></div></article></div>
+<section class="related-writing" aria-labelledby="related-title"><p class="eyebrow">继续阅读</p><h2 id="related-title">也许你还想看</h2><div class="related-grid"><article class="writing-entry">
+<p class="writing-meta">技术笔记 <span>· 阅读约 4 分钟</span></p>
+<h3><a href="/zh/writing/a-citation-is-not-enough/">有引用还不够：这件事到底属于谁？</a></h3>
+<p class="writing-summary">来源支持、说话人身份和亲身经历，不能当成同一项检查。</p></article><article class="writing-entry">
+<p class="writing-meta">产品与创业 <span>· 阅读约 4 分钟</span></p>
+<h3><a href="/zh/writing/we-lost-the-reader/">我和 AI 越聊越明白，读者却看不懂了</a></h3>
+<p class="writing-summary">作者和助手共享的背景，可能恰好成了读者进不来的原因。</p></article></div></section></main><footer class="wrap writing-footer"><p>© 2026 赵之赫（Bob）</p><nav aria-label="页尾导航"><a href="/zh/writing/">全部文章</a><a href="/zh/writing/feed.xml">RSS</a><a href="/zh/#contact">联系我</a><a href="#top">返回顶部 ↑</a></nav></footer></body></html>

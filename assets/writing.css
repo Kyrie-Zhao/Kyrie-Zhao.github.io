@@ -58,6 +58,10 @@
 .related-writing {margin:64px 0 74px;border-top:1px solid var(--line);padding-top:32px}
 .related-writing h2 {font-family:var(--serif);font-weight:400;font-size:2rem;margin:8px 0 14px}
 .related-grid {display:grid;grid-template-columns:1fr 1fr;gap:40px}
+html:lang(zh-CN) .article-body {line-height:1.95}
+html:lang(zh-CN) .article-toc {line-height:1.8}
+html:lang(zh-CN) .article-header h1 {font-size:clamp(2rem,4vw,3.2rem)}
+html:lang(zh-CN) .article-deck {line-height:1.85}
 @media(max-width:900px) {
  .article-layout {grid-template-columns:180px minmax(0,1fr);gap:32px}
  .writing-category {grid-template-columns:220px minmax(0,1fr);gap:36px}

@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "after-muse-and-today",
+    "title": "Muse 和 Today 之后，个人 AI 还缺什么？",
+    "description": "个人智能体越擅长执行，判断什么值得做就越重要。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "dont-make-me-teach-my-ai-twice",
+    "title": "别让我把同一件事教 AI 两遍",
+    "description": "记忆有没有用，要看下一次：上次的纠正，能不能省掉这次的返工。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "business-beyond-productivity",
+    "title": "生产力之外，AI 还有生意可做吗？",
+    "description": "情感价值是真实的。但一个产品仍要让人愿意再用一次，也要承担得起交付成本。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "we-lost-the-reader",
+    "title": "我和 AI 越聊越明白，读者却看不懂了",
+    "description": "作者和助手共享的背景，可能恰好成了读者进不来的原因。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "who-keeps-the-promise",
+    "title": "AI 替你许的诺，最后谁来兑现？",
+    "description": "一封润色得体的草稿，可能悄悄加上一个你从未作出的决定。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "the-refusal-ai-edited-away",
+    "title": "AI 润色之后，我的拒绝不见了",
+    "description": "好的改写既要保留句子的意思，也要保留它原本要让对方做什么。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "not-every-day-is-an-epiphany",
+    "title": "不是每一天，都需要一场人生感悟",
+    "description": "AI 对生活的解读，不该悄悄变成关于这段生活的事实依据。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "the-right-to-change-your-mind",
+    "title": "AI 越了解我，我越需要改变主意的权利",
+    "description": "长期理解应该让约定更容易调整，而不是让人越来越难摆脱旧画像。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "did-memory-change-the-decision",
+    "title": "记忆真的改变了这次决定吗？",
+    "description": "分清记忆被读到、行为受影响，以及这种影响对用户有用，是三个不同的问题。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "a-citation-is-not-enough",
+    "title": "有引用还不够：这件事到底属于谁？",
+    "description": "来源支持、说话人身份和亲身经历，不能当成同一项检查。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "when-an-agent-does-nothing",
+    "title": "智能体什么都没做，究竟发生了什么？",
+    "description": "判断系统是否懂得克制，先要确认它有行动的机会，也要如实区分执行失败。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "capabilities-are-not-modules",
+    "title": "智能体需要某种能力，不等于需要一个独立模块",
+    "description": "守住必须遵守的边界，再让具体任务决定执行结构有多复杂。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "relevant-does-not-mean-usable",
+    "title": "相关，不等于可以用：个人 AI 的上下文选择",
+    "description": "选择上下文时，还要考虑时间、不确定性、使用目的，以及谁会收到结果。",
+    "date": "2026-09-28"
+  },
+  {
+    "slug": "corrections-are-not-global-preferences",
+    "title": "用户的一次纠正，不是适用于所有任务的偏好",
+    "description": "反馈需要明确对象和范围，还要在下一次行为中检查它是否真正生效。",
+    "date": "2026-09-28"
+  }
+]

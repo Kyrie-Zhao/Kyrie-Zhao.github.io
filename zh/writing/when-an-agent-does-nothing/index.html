@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>智能体什么都没做，究竟发生了什么？ — 赵之赫（Bob）</title>
+<meta name="description" content="判断系统是否懂得克制，先要确认它有行动的机会，也要如实区分执行失败。">
+<meta name="author" content="赵之赫（Bob）"><meta name="theme-color" content="#f8f7f3">
+<link rel="canonical" href="https://bob-zhihe.github.io/zh/writing/when-an-agent-does-nothing/">
+<link rel="alternate" hreflang="en" href="https://bob-zhihe.github.io/writing/when-an-agent-does-nothing/">
+<link rel="alternate" hreflang="zh-CN" href="https://bob-zhihe.github.io/zh/writing/when-an-agent-does-nothing/">
+<link rel="alternate" hreflang="x-default" href="https://bob-zhihe.github.io/writing/when-an-agent-does-nothing/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/writing.css">
+<link rel="alternate" type="application/rss+xml" title="赵之赫（Bob） — 文章" href="/zh/writing/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智能体什么都没做，究竟发生了什么？"><meta property="og:description" content="判断系统是否懂得克制，先要确认它有行动的机会，也要如实区分执行失败。">
+<meta property="og:url" content="https://bob-zhihe.github.io/zh/writing/when-an-agent-does-nothing/"><meta property="og:site_name" content="赵之赫（Bob）">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="智能体什么都没做，究竟发生了什么？">
+<meta name="twitter:description" content="判断系统是否懂得克制，先要确认它有行动的机会，也要如实区分执行失败。"><meta property="article:published_time" content="2026-09-28">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "智能体什么都没做，究竟发生了什么？", "description": "判断系统是否懂得克制，先要确认它有行动的机会，也要如实区分执行失败。", "author": {"@type": "Person", "name": "Zhihe (Bob) Zhao", "url": "https://bob-zhihe.github.io/"}, "datePublished": "2026-09-28", "dateModified": "2026-09-28", "mainEntityOfPage": "https://bob-zhihe.github.io/zh/writing/when-an-agent-does-nothing/", "inLanguage": "zh-CN", "articleSection": "技术笔记", "translationOfWork": {"@type": "BlogPosting", "@id": "https://bob-zhihe.github.io/writing/when-an-agent-does-nothing/", "inLanguage": "en"}}</script>
+</head><body id="top"><a class="skip-link" href="#main">跳转到正文</a>
+<header class="site-header"><div class="wrap header-inner">
+<a class="wordmark" href="/zh/">赵之赫<span lang="en">Bob</span></a>
+<div class="header-controls"><nav aria-label="主导航"><a href="/zh/#work">现在在做</a><a href="/zh/writing/">文章</a><a href="/zh/#featured">研究</a><a href="/zh/#contact">联系</a></nav>
+<nav class="language-switch" aria-label="语言"><a href="/writing/when-an-agent-does-nothing/" lang="en" hreflang="en">EN</a><a href="/zh/writing/when-an-agent-does-nothing/" lang="zh-CN" hreflang="zh-CN" aria-current="page">中文</a></nav></div></div></header><main id="main" class="wrap article-main">
+<nav class="breadcrumbs" aria-label="当前位置"><a href="/zh/writing/">文章</a><span aria-hidden="true">/</span><a href="/zh/writing/#technical-notes">技术笔记</a></nav>
+<header class="article-header"><p class="eyebrow">技术笔记</p><h1>智能体什么都没做，究竟发生了什么？</h1>
+<p class="article-deck">判断系统是否懂得克制，先要确认它有行动的机会，也要如实区分执行失败。</p>
+<p class="article-byline">赵之赫（Bob） <span>·</span> <time datetime="2026-09-28">2026 年 9 月 28 日</time> <span>·</span> 阅读约 4 分钟</p></header>
+<div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>本文目录</p><div class="toc">
+<ul>
+<li><a href="#先找到一次真正的决策机会">先找到一次真正的决策机会</a></li>
+<li><a href="#先区分结果再打分">先区分结果，再打分</a></li>
+<li><a href="#第一次判断时先别看未来">第一次判断时，先别看未来</a></li>
+<li><a href="#既要测该行动的时候也要测不该行动的时候">既要测该行动的时候，也要测不该行动的时候</a></li>
+<li><a href="#解释还不是充分证据">解释还不是充分证据</a></li>
+</ul>
+</div>
+</aside>
+<article class="article-body" aria-label="文章正文"><p>一个主动型助手没有发出通知。它是在尊重用户的注意力吗？</p>
+<p>有可能。也可能是漏掉了事件、缺少有用的工具、预算耗尽，或者还没作出决定就失败了。这几种情况在屏幕上看起来一模一样。</p>
+<p>因此，“沉默”很难成为一个直接可用的产品指标。只统计打扰减少了多少，可能奖励一个根本不工作的系统；只统计主动介入增加了多少，也可能奖励一个不断给用户添事的系统。</p>
+<p>下面是一种拟议中的评估方法，不是已经验证的基准，也不是一份证明系统懂得克制的实测报告。</p>
+<h2 id="先找到一次真正的决策机会">先找到一次真正的决策机会</h2>
+<p>先限定一个助手确实可能采取行动的情境。说清楚当时有什么信息、用户允许做什么、系统有哪些可选行动，以及这个行动在多长时间内仍然有用。</p>
+<p>看一个假设例子：用户希望助手帮忙准备一次重要通话。10:00 时，通话议程尚不明确；10:15，一个获准访问的来源提供了议程；10:30，通话开始。</p>
+<p>提前发一条泛泛的提醒、稍后送上一份有用的简报，以及等通话结束才送到，不能算同样的成功。评估者也不该拿 10:15 才知道的信息，评判系统在 10:00 时的判断。</p>
+<p>评估的对象应当是这次机会及其信息边界，而不只是最后碰巧生成的那条通知。</p>
+<h2 id="先区分结果再打分">先区分结果，再打分</h2>
+<div class="table-scroll" role="region" aria-label="对照表" tabindex="0"><table>
+<thead>
+<tr>
+<th>观察到的情况</th>
+<th>需要追问什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>智能体采取行动</td>
+<td>行动是否有用、及时，并且获得授权？</td>
+</tr>
+<tr>
+<td>智能体等待</td>
+<td>什么变化可能改变决定？等待的代价是否可以接受？</td>
+</tr>
+<tr>
+<td>智能体决定不介入</td>
+<td>是依据不足，还是不介入更合适？</td>
+</tr>
+<tr>
+<td>执行失败</td>
+<td>是什么阻止了判断或交付？</td>
+</tr>
+</tbody>
+</table></div>
+<p>这是评估上的区分，不代表每个产品都需要恰好四种运行状态。有些任务需要分得更细。重要的是，执行故障不能在没人察觉的情况下，被解释成体贴的克制。</p>
+<p>如果系统根本无法访问议程来源，没有生成简报，就不能说明它主动决定等议程。如果运行在议程到达前便结束，评估过程可能从未给这种等待行为出现的机会。</p>
+<h2 id="第一次判断时先别看未来">第一次判断时，先别看未来</h2>
+<p>评估者可以先只查看决策时刻已经存在的材料。在看到模型输出和后续结果之前，记录哪些行动看起来有依据，还有哪些不确定之处。</p>
+<p>把这次判断固定下来之后，再看后来发生的事。这样才能检查：等待是否变得有价值，介入是否太早，以及事后知道的结果有没有诱使我们重新编排当时的故事。</p>
+<p>第二阶段不能自动覆盖第一阶段。合理的决定可能遇到坏结果，没有依据的决定也可能碰巧成功。</p>
+<p>个人偏好同样重要。对一条提醒造成的负担，两位用户完全可能有不同看法。事实和权限边界，应当与用户是否愿意被打扰分开检查。</p>
+<h2 id="既要测该行动的时候也要测不该行动的时候">既要测该行动的时候，也要测不该行动的时候</h2>
+<p>如果评估里全是有意思的时刻，系统就容易被鼓励多输出。普通、重复、无关和禁止介入的情境，也应该出现。反过来，如果全部例子都只有保持沉默的理由，也证明不了助手能识别真正有用的机会。</p>
+<p>漏掉机会与不受欢迎的介入，应分别报告；时机错误与内容质量，应分别报告。失败和未成功尝试的成本也要计入，不能只看最终送到用户手上的结果。</p>
+<p>平均有用程度很高，不能抵消一次未经授权的披露。不同错误的后果不同，合成一个分数可能掩盖产品最严重的弱点。</p>
+<h2 id="解释还不是充分证据">解释还不是充分证据</h2>
+<p>“我决定不打扰用户”，是智能体自己的说法。一份有用的执行记录，还应该说明它看过什么、当时有哪些可选行动，以及执行是否真的走到了作出决定的阶段。</p>
+<p>即使有这份记录，也无法看到所有未表达的想法。我不会声称埋点可以证明模型内部从未产生某个候选。我们能检查已记录的行为、设计对照，但不能把缺少一条日志，当作完整看到了模型内部思考。</p>
+<p>目标并不夸张，却很重要：让没有输出这件事，可以被解释。在称赞助手懂得克制之前，先确认它确实拥有采取其他行动所需的信息、权限、工具和机会。</p>
+<div class="article-author"><p><strong>赵之赫（Bob）</strong>是 AxiomsTen 创始人，正在打造 Spiro。他关注个人 AI、长期记忆，以及系统如何将对一个人的理解用在具体事情上。</p><a href="/zh/">关于作者 →</a></div></article></div>
+<section class="related-writing" aria-labelledby="related-title"><p class="eyebrow">继续阅读</p><h2 id="related-title">也许你还想看</h2><div class="related-grid"><article class="writing-entry">
+<p class="writing-meta">个人 AI <span>· 阅读约 4 分钟</span></p>
+<h3><a href="/zh/writing/after-muse-and-today/">Muse 和 Today 之后，个人 AI 还缺什么？</a></h3>
+<p class="writing-summary">个人智能体越擅长执行，判断什么值得做就越重要。</p></article><article class="writing-entry">
+<p class="writing-meta">技术笔记 <span>· 阅读约 5 分钟</span></p>
+<h3><a href="/zh/writing/did-memory-change-the-decision/">记忆真的改变了这次决定吗？</a></h3>
+<p class="writing-summary">分清记忆被读到、行为受影响，以及这种影响对用户有用，是三个不同的问题。</p></article></div></section></main><footer class="wrap writing-footer"><p>© 2026 赵之赫（Bob）</p><nav aria-label="页尾导航"><a href="/zh/writing/">全部文章</a><a href="/zh/writing/feed.xml">RSS</a><a href="/zh/#contact">联系我</a><a href="#top">返回顶部 ↑</a></nav></footer></body></html>

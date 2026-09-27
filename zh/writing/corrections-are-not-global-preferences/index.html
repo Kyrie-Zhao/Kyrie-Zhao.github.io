@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>用户的一次纠正，不是适用于所有任务的偏好 — 赵之赫（Bob）</title>
+<meta name="description" content="反馈需要明确对象和范围，还要在下一次行为中检查它是否真正生效。">
+<meta name="author" content="赵之赫（Bob）"><meta name="theme-color" content="#f8f7f3">
+<link rel="canonical" href="https://bob-zhihe.github.io/zh/writing/corrections-are-not-global-preferences/">
+<link rel="alternate" hreflang="en" href="https://bob-zhihe.github.io/writing/corrections-are-not-global-preferences/">
+<link rel="alternate" hreflang="zh-CN" href="https://bob-zhihe.github.io/zh/writing/corrections-are-not-global-preferences/">
+<link rel="alternate" hreflang="x-default" href="https://bob-zhihe.github.io/writing/corrections-are-not-global-preferences/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css"><link rel="stylesheet" href="/assets/writing.css">
+<link rel="alternate" type="application/rss+xml" title="赵之赫（Bob） — 文章" href="/zh/writing/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用户的一次纠正，不是适用于所有任务的偏好"><meta property="og:description" content="反馈需要明确对象和范围，还要在下一次行为中检查它是否真正生效。">
+<meta property="og:url" content="https://bob-zhihe.github.io/zh/writing/corrections-are-not-global-preferences/"><meta property="og:site_name" content="赵之赫（Bob）">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="用户的一次纠正，不是适用于所有任务的偏好">
+<meta name="twitter:description" content="反馈需要明确对象和范围，还要在下一次行为中检查它是否真正生效。"><meta property="article:published_time" content="2026-09-28">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "用户的一次纠正，不是适用于所有任务的偏好", "description": "反馈需要明确对象和范围，还要在下一次行为中检查它是否真正生效。", "author": {"@type": "Person", "name": "Zhihe (Bob) Zhao", "url": "https://bob-zhihe.github.io/"}, "datePublished": "2026-09-28", "dateModified": "2026-09-28", "mainEntityOfPage": "https://bob-zhihe.github.io/zh/writing/corrections-are-not-global-preferences/", "inLanguage": "zh-CN", "articleSection": "技术笔记", "translationOfWork": {"@type": "BlogPosting", "@id": "https://bob-zhihe.github.io/writing/corrections-are-not-global-preferences/", "inLanguage": "en"}}</script>
+</head><body id="top"><a class="skip-link" href="#main">跳转到正文</a>
+<header class="site-header"><div class="wrap header-inner">
+<a class="wordmark" href="/zh/">赵之赫<span lang="en">Bob</span></a>
+<div class="header-controls"><nav aria-label="主导航"><a href="/zh/#work">现在在做</a><a href="/zh/writing/">文章</a><a href="/zh/#featured">研究</a><a href="/zh/#contact">联系</a></nav>
+<nav class="language-switch" aria-label="语言"><a href="/writing/corrections-are-not-global-preferences/" lang="en" hreflang="en">EN</a><a href="/zh/writing/corrections-are-not-global-preferences/" lang="zh-CN" hreflang="zh-CN" aria-current="page">中文</a></nav></div></div></header><main id="main" class="wrap article-main">
+<nav class="breadcrumbs" aria-label="当前位置"><a href="/zh/writing/">文章</a><span aria-hidden="true">/</span><a href="/zh/writing/#technical-notes">技术笔记</a></nav>
+<header class="article-header"><p class="eyebrow">技术笔记</p><h1>用户的一次纠正，不是适用于所有任务的偏好</h1>
+<p class="article-deck">反馈需要明确对象和范围，还要在下一次行为中检查它是否真正生效。</p>
+<p class="article-byline">赵之赫（Bob） <span>·</span> <time datetime="2026-09-28">2026 年 9 月 28 日</time> <span>·</span> 阅读约 4 分钟</p></header>
+<div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>本文目录</p><div class="toc">
+<ul>
+<li><a href="#先弄清楚用户在纠正什么">先弄清楚，用户在纠正什么</a></li>
+<li><a href="#适用范围也是意思的一部分">适用范围，也是意思的一部分</a></li>
+<li><a href="#既看该改变的也看不该受影响的">既看该改变的，也看不该受影响的</a></li>
+<li><a href="#用户也可以改变原来的约定">用户也可以改变原来的约定</a></li>
+<li><a href="#写作要求不等于对一个人的定性">写作要求，不等于对一个人的定性</a></li>
+</ul>
+</div>
+</aside>
+<article class="article-body" aria-label="文章正文"><p>“这段能不能别这么煽情。”</p>
+<p>个人助手可能把这句话理解为：修改眼前这一段，调整这类消息的风格，记住用户的一般写作偏好，甚至据此判断用户的性格。</p>
+<p>单凭这句话，未必知道用户指的是哪一种。一个急于学习的系统，如果总选范围最大的解释，就可能很自信地学错。</p>
+<p>本文讨论如何判断反馈的适用范围。文中的例子均为假设，检查方法也只是设计建议，并不意味着自动判断反馈归属的问题已经解决。</p>
+<h2 id="先弄清楚用户在纠正什么">先弄清楚，用户在纠正什么</h2>
+<p>面对一封写给家人的消息，用户可能有三种回复：</p>
+<blockquote>
+<p>这件事没发生过。</p>
+<p>发生过，但别告诉我爸妈。</p>
+<p>可以提，但这一段写得像告别演说。</p>
+</blockquote>
+<p>第一句质疑事实，第二句限制披露，第三句针对表达。如果把它们都存成“用户对这个话题有负面情绪”，三者之间的重要区别就丢了。</p>
+<p>修改措辞，不应该悄悄删除事实记录。限制披露，不等于这件事从未发生。纠正事实，则应该影响之后对这条错误信息的使用，而不只是让下一次的说法委婉一点。</p>
+<h2 id="适用范围也是意思的一部分">适用范围，也是意思的一部分</h2>
+<p>理解反馈时，需要保留它针对的任务和情境。“周报里别强行升华”，不等于复盘不能总结经验；“今天先算了”，不一定是在撤回长期偏好；“永远别把这件事告诉我家人”，也不是要求换一种语气。</p>
+<p>范围不清楚时，可以问一个有针对性的问题，可以先只改当前内容，也可以保留一个待确认的解释。怎么选，要看误判的后果，也要考虑打断用户会带来多少负担。</p>
+<p>系统不必为每个形容词都追问，但也不能默默把每次编辑意见升级成长期规则。</p>
+<h2 id="既看该改变的也看不该受影响的">既看该改变的，也看不该受影响的</h2>
+<p>一个简单的评估，可以包含一条纠正、一个相关任务和一个不相关任务。</p>
+<div class="table-scroll" role="region" aria-label="对照表" tabindex="0"><table>
+<thead>
+<tr>
+<th>后续输入</th>
+<th>希望观察到什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>再写一份周报</td>
+<td>用户不想要的结尾感悟减少了</td>
+</tr>
+<tr>
+<td>用户要求做项目复盘</td>
+<td>有用的经验教训仍然保留</td>
+</tr>
+<tr>
+<td>对原事件作事实总结</td>
+<td>事件本身没有被改写</td>
+</tr>
+<tr>
+<td>用户后来明确要求加入反思</td>
+<td>当前指令在它的适用范围内得到执行</td>
+</tr>
+</tbody>
+</table></div>
+<p>如果系统从此在所有地方都删掉反思，它学到了某种行为，却没学会边界。如果只改了眼前这一段，也可能范围守住了，却没有记住用户明确希望长期生效的偏好。</p>
+<p>评估者应当在看模型表现之前，说清楚这个情境支持哪一种解释。否则，几乎任何输出都能在事后被辩护成合理的个性化选择。</p>
+<h2 id="用户也可以改变原来的约定">用户也可以改变原来的约定</h2>
+<p>过去准确的偏好，今天可能不再适用。这与纠正之前的误解不是一回事。</p>
+<p>如果一个人以前希望助手严格提醒，现在要求暂停，旧约定不必因此变成一段错误历史。需要决定的是：现在的行为听哪一个。类似地，撤回某种信息用途，也不必然意味着否认信息本身。</p>
+<p>分清这一点，有助于避免破坏性的更新：一个地方改了，却抹掉了别处仍然有用的背景。助手也能解释自己为什么改变做法，而不必坚持说用户前后矛盾。</p>
+<p>变化应当体现在合适的后续任务里。一句“我明白了”代替不了实际观察。</p>
+<h2 id="写作要求不等于对一个人的定性">写作要求，不等于对一个人的定性</h2>
+<p>用户的风格偏好，可以告诉我们某份内容该怎么写；它们不会自动成为判断情绪状态、关系好坏或长期身份的证据。</p>
+<p>当多个任务的记忆共享同一份人物理解时，这一点尤其重要。工作报告中的要求，不应未经检查就变成写给家人的消息里的前提。存放在一起，不代表适用范围相同。</p>
+<p>开发者可以在评估中明确这条边界，而不必规定一套通用的物理模块。无论实现上把信息存在哪里，核心问题都是：这次更新有权改什么，应该影响多大范围。</p>
+<p>判断是否成功，可以很实际：下一个相关任务变好了，不相关的任务没有变差，而且用户以后仍然可以修改约定。学习应该减少管理助手的工作，而不是让每一次纠正，都变成与一本越来越厚的规则手册谈判。</p>
+<div class="article-author"><p><strong>赵之赫（Bob）</strong>是 AxiomsTen 创始人，正在打造 Spiro。他关注个人 AI、长期记忆，以及系统如何将对一个人的理解用在具体事情上。</p><a href="/zh/">关于作者 →</a></div></article></div>
+<section class="related-writing" aria-labelledby="related-title"><p class="eyebrow">继续阅读</p><h2 id="related-title">也许你还想看</h2><div class="related-grid"><article class="writing-entry">
+<p class="writing-meta">个人 AI <span>· 阅读约 4 分钟</span></p>
+<h3><a href="/zh/writing/dont-make-me-teach-my-ai-twice/">别让我把同一件事教 AI 两遍</a></h3>
+<p class="writing-summary">记忆有没有用，要看下一次：上次的纠正，能不能省掉这次的返工。</p></article><article class="writing-entry">
+<p class="writing-meta">个人 AI <span>· 阅读约 3 分钟</span></p>
+<h3><a href="/zh/writing/the-right-to-change-your-mind/">AI 越了解我，我越需要改变主意的权利</a></h3>
+<p class="writing-summary">长期理解应该让约定更容易调整，而不是让人越来越难摆脱旧画像。</p></article></div></section></main><footer class="wrap writing-footer"><p>© 2026 赵之赫（Bob）</p><nav aria-label="页尾导航"><a href="/zh/writing/">全部文章</a><a href="/zh/writing/feed.xml">RSS</a><a href="/zh/#contact">联系我</a><a href="#top">返回顶部 ↑</a></nav></footer></body></html>
