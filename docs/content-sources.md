@@ -48,3 +48,20 @@ Published with the author's instruction to release the full English collection. 
 The technical collection separates proposals from validated results. It does not publish internal whitepapers, patent documents, private transcripts, experiment identifiers, or unpublished implementation chains. Public source descriptions were checked against Meta's Muse announcement, Today's introduction, the LangMem conceptual guide, and W3C PROV Overview. Those links appear next to relevant statements. The site does not claim a comparative product test, new algorithm, granted patent, or completed silence benchmark.
 
 Homepage highlights two technical notes and one personal-AI essay. The full directory groups all 14 texts into Technical Notes, Personal AI, and Building Products. English source Markdown and metadata are canonical; HTML, feeds, and the directory are generated together.
+
+## Earlier products and selected coverage — 27 September 2026
+
+The author approved adding the verified early-product history and coverage to the English homepage. The biography now states the 2025 PhD explicitly. Nuna/PieX and Collie R1 sit under “Previously built · ThingX”; Spiro remains the current work.
+
+| Evidence | Source and date | Scope |
+| --- | --- | --- |
+| ThingX CEO, with direct quotations and a named photograph | [InvestHK, 8 April 2025](https://www.investhk.gov.hk/en/news/digital-health-technology-start-up-uses-hong-kong-as-headquarters-to-scale-up-operations/) | Official government company feature; establishes the named role at that time. |
+| Forbes China 30 Under 30 and HK$12 million angel funding | [CUHK IE, 31 December 2024](https://www.ie.cuhk.edu.hk/ie-phd-zhihe-zhao-has-been-selected-for-the-forbes-china-30-under-30/) | Recognition is personal; funding is the company's. The article describes the then-role as part-time CEO. It does not establish exact full-time employment dates or sole fundraising credit. |
+| Participation in Nuna and Collie R1; departure from ThingX | [Author's transition post, 2025](https://www.linkedin.com/posts/zhihe-bob-zhao-77003814b_a-new-chapter-ahead-after-careful-consideration-activity-7345703066551111680-qikP) | First-person career account, not independent reporting. Product work is credited to the team. |
+| PieX pendant announcement | [MassDevice, 2 January 2025](https://www.massdevice.com/piex-ai-launches-ai-pendant-sensor/) | Bylined product news based on the announcement; not a personal interview or clinical validation. |
+| PieX at CES 2025 | [Notebookcheck, 9 January 2025](https://www.notebookcheck.net/Piex-AI-unveils-PieX-Pendant-to-track-emotions-and-monitor-mental-health-with-on-board-mmWave-radar-and-AI.944147.0.html) | Product announcement coverage, with company/press-release sources; not a hands-on efficacy review. |
+| PieX later became Nuna | [Athletech News, 25 August 2025](https://athletechnews.com/wearables-move-beyond-fitness-with-nuna-pendant-a-299-ai-necklace-that-tracks-emotional-health/) | Later product coverage, after the author's departure. Explicitly labeled as such on the homepage. |
+| ThingX in the Hong Kong CES 2025 delegation | [HKSTP, 8 January 2025](https://www.hkstp.org/en/park-life/news-and-events/news/hong-kongs-innovations-radiating-impact-at-ces-2025) | Company participation, not a CES award. |
+| AxiomsTen founder profile | [36Kr / Hard Tech, March 2026](https://eu.36kr.com/en/p/3729647028960903) | Earlier wearable-AI chapter; historical launch targets are not current product promises. |
+
+The homepage uses short editorial link labels, not purported verbatim headlines. It does not present press-release syndication (including Yahoo Finance / PR Newswire) as independent editorial coverage. A Tech in Asia interview is mentioned in the author's own LinkedIn post, but a published article has not been located, so it is not listed as verified coverage. Later Nuna coverage does not imply continued employment, ownership, or responsibility for subsequent launches. “World's first,” medical efficacy claims, and inferred commercial success are omitted.

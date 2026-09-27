@@ -4,7 +4,7 @@ A small, accessible static site for <https://bob-zhihe.github.io/>. GitHub Pages
 
 ## Edit and preview
 
-- `index.html`: biography, current work, publications, background, and contact.
+- `index.html`: biography, current work, previously built products, publications, background, recognition, selected coverage, and contact.
 - `assets/site.css`: responsive layout, typography, and print styles.
 - `assets/images/bob-homepage.jpg`: author-selected portrait.
 - `docs/content-sources.md`: public sources and editorial decisions.
@@ -17,6 +17,8 @@ The `.nojekyll` marker tells GitHub Pages to serve the checked-in files directly
 ## Maintenance
 
 Keep career claims dated and linked to evidence. Distinguish ongoing research from published results; distinguish papers, posters, and workshop publications. The October 2023 CV is explicitly an archive. When adding a current CV, publish a separately dated file and update its label.
+
+For coverage, distinguish founder profiles, official company features, product news, and later reporting after departure. Keep Nuna/PieX and Collie R1 under the previous ThingX chapter. Company funding and team products must not become claims of sole personal achievement. Source dates and limits are recorded in `docs/content-sources.md`.
 
 Before deployment, check desktop and mobile layouts, keyboard navigation, internal anchors, local assets, structured metadata, and publication links. Update `sitemap.xml` and the footer date only for substantive content changes.
 
