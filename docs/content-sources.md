@@ -73,3 +73,11 @@ The author requested and authorized a full Chinese homepage and complete profess
 Chinese sources preserve every article's section structure, examples, comparisons, references, and distinction between proposals and observed results. English sentence order is adapted where needed for natural Chinese prose. Original academic paper titles and proper names remain identifiable. Translation does not add new biographical claims or strengthen evidence. The Chinese article publication date is 28 September 2026; the English originals retain their 27 September publication date.
 
 Both editions use the same article slugs and reciprocal language links. Each has its own canonical URL, feed, search index, and localized interface. No visitor is redirected based on inferred nationality or browser language.
+
+## X profile and visitor map — 28 September 2026
+
+The author requested an X link and a pageview counter with a worldwide visitor map. The verified personal X account is [@zzhontheway](https://x.com/zzhontheway); the link appears in both homepage profile rows, both homepages' structured identity metadata, and all writing footers. This change does not publish anything to X.
+
+Flag Counter issued the dedicated public counter `nO2k` during setup. The optional email-registration step was skipped. One shared HTTPS map image counts visits across the current English and Chinese homepages, writing directories, and articles. The displayed total starts with this installation; it is pageviews, not a claim about historical readership or unique people. Setup and verification visits are included.
+
+The provider's [FAQ](https://flagcounter.com/faq.html) and [privacy policy](https://flagcounter.com/privacy.html) were checked on 28 September 2026. The interface identifies the provider, links to its privacy policy and detailed statistics, and explains the approximate locations and image-refresh interval. No sample visits, fabricated locations, browser geolocation, or separate tracking script are used. Maintenance and free-service limitations are recorded in the README.

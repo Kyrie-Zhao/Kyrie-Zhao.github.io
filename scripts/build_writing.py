@@ -11,6 +11,7 @@ from xml.etree import ElementTree as ET
 
 import markdown
 from markdown.extensions.toc import slugify_unicode
+from site_components import X_URL, visitor_stats
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'content/writing'
@@ -172,7 +173,7 @@ def head(title, description, path, locale, article=None):
 def footer(locale):
     c = LOCALES[locale]
     prefix = c['prefix']
-    return f'''<footer class="wrap writing-footer"><p>© 2026 {c['author']}</p><nav aria-label="{c['footer_label']}"><a href="{prefix}/writing/">{c['all_writing']}</a><a href="{prefix}/writing/feed.xml">RSS</a><a href="{prefix}/#contact">{c['get_in_touch']}</a><a href="#top">{c['back_to_top']}</a></nav></footer></body></html>'''
+    return visitor_stats(locale) + f'''<footer class="wrap writing-footer"><p>© 2026 {c['author']}</p><nav aria-label="{c['footer_label']}"><a href="{X_URL}" rel="me">X <span aria-hidden="true">↗</span></a><a href="{prefix}/writing/">{c['all_writing']}</a><a href="{prefix}/writing/feed.xml">RSS</a><a href="{prefix}/#contact">{c['get_in_touch']}</a><a href="#top">{c['back_to_top']}</a></nav></footer></body></html>'''
 
 
 def row(p, locale, featured=False):
@@ -246,7 +247,7 @@ def update_home(posts, locale):
       <p class="section-lead">{c['home_intro']}</p>'''
     section += category_nav(posts, locale) + ''.join(row(by_slug[x], locale) for x in FEATURED)
     section += f'<a class="text-link writing-all" href="{c["prefix"]}/writing/">{c["explore"].format(n=len(posts))} <span aria-hidden="true">→</span></a></div></section>\n    <!-- WRITING:END -->'
-    for name, replacement in [('WRITING', section), ('LANGUAGE', '<!-- LANGUAGE:START -->' + language_switch(locale, '/') + '<!-- LANGUAGE:END -->'), ('ALTERNATES', '<!-- ALTERNATES:START -->\n' + alternate_links('/') + '\n  <!-- ALTERNATES:END -->')]:
+    for name, replacement in [('WRITING', section), ('LANGUAGE', '<!-- LANGUAGE:START -->' + language_switch(locale, '/') + '<!-- LANGUAGE:END -->'), ('ALTERNATES', '<!-- ALTERNATES:START -->\n' + alternate_links('/') + '\n  <!-- ALTERNATES:END -->'), ('VISITORS', '<!-- VISITORS:START -->\n' + visitor_stats(locale) + '\n  <!-- VISITORS:END -->')]:
         pattern = rf'<!-- {name}:START -->.*?<!-- {name}:END -->'
         source, count = re.subn(pattern, lambda _: replacement, source, flags=re.S)
         assert count == 1, f'{home}: expected one {name} marker'

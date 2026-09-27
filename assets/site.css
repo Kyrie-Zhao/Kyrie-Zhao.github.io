@@ -814,6 +814,74 @@ nav a:hover {
   color:var(--muted)
 }
 
+.visitor-stats {
+  display:grid;
+  grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+  align-items:center;
+  gap:48px;
+  border-top:1px solid var(--line);
+  padding-block:36px 40px
+}
+
+.visitor-copy h2 {
+  font-family:var(--serif);
+  font-size:clamp(1.5rem,2.5vw,1.9rem);
+  font-weight:400;
+  line-height:1.35;
+  margin:10px 0 16px
+}
+
+.visitor-copy > p:not(.eyebrow) {
+  font-size:.9375rem;
+  color:var(--muted)
+}
+
+.visitor-copy .visitor-since {
+  margin-top:10px;
+  font-size:.8125rem
+}
+
+.visitor-copy .text-link {
+  font-size:.875rem;
+  margin-top:16px
+}
+
+.visitor-map {
+  min-width:0
+}
+
+.visitor-map > a {
+  display:block
+}
+
+.visitor-map img {
+  width:100%;
+  height:auto;
+  aspect-ratio:600 / 291;
+  object-fit:contain
+}
+
+.visitor-map figcaption {
+  font-size:.8125rem;
+  color:var(--muted);
+  line-height:1.7;
+  margin-top:12px
+}
+
+@media(max-width:680px) {
+  .visitor-stats {
+    grid-template-columns:1fr;
+    gap:24px;
+    padding-block:28px 32px
+  }
+}
+
+@media print {
+  .visitor-stats {
+    display:none
+  }
+}
+
 @media(min-width:1450px) {
   .hero {
     padding-top:100px;
