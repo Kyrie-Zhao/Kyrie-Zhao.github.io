@@ -16,7 +16,7 @@ from site_components import X_URL, visitor_stats
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'content/writing'
 BASE = 'https://bob-zhihe.github.io'
-UPDATED = '2026-09-28'
+UPDATED = '2026-10-01'
 FEATURED = ['did-memory-change-the-decision', 'a-citation-is-not-enough', 'dont-make-me-teach-my-ai-twice']
 CATEGORIES = {
     'Technical Notes': 'technical-notes',
@@ -33,7 +33,7 @@ LOCALES = {
         'categories_label': 'Writing categories', 'breadcrumb': 'Breadcrumb',
         'toc_label': 'On this page', 'toc': 'In this article', 'article_text': 'Article text',
         'table_label': 'Comparison table', 'minutes': '{n} min read', 'count': '{n:02d} articles',
-        'author_bio': '<strong>Zhihe (Bob) Zhao</strong> is the founder of AxiomsTen, building Spiro. His work explores personal AI, long-term memory, and how systems use an understanding of a person.',
+        'author_bio': '<strong>Zhihe (Bob) Zhao</strong> is the founder and CEO of AxiomsTen, building Spiro. He explores how personal AI can learn from everyday life and become more helpful to a person over time.',
         'about_author': 'About the author →', 'keep_reading': 'Keep reading', 'related': 'Connected questions',
         'description': 'Technical notes and essays on personal AI, memory, and building useful products.',
         'eyebrow': 'Notes from building',
@@ -57,7 +57,7 @@ LOCALES = {
         'categories_label': '文章分类', 'breadcrumb': '当前位置',
         'toc_label': '文章目录', 'toc': '本文目录', 'article_text': '文章正文',
         'table_label': '对照表', 'minutes': '阅读约 {n} 分钟', 'count': '{n:02d} 篇文章',
-        'author_bio': '<strong>赵之赫（Bob）</strong>是 AxiomsTen 创始人，正在打造 Spiro。他关注个人 AI、长期记忆，以及系统如何将对一个人的理解用在具体事情上。',
+        'author_bio': '<strong>赵之赫（Bob）</strong>是 AxiomsTen 创始人兼 CEO，正在打造 Spiro。他探索如何让个人 AI 在日常生活中理解一个人，并在长期相处中提供更贴切的帮助。',
         'about_author': '关于作者 →', 'keep_reading': '继续阅读', 'related': '也许你还想看',
         'description': '关于个人 AI、记忆与产品的技术笔记和随笔。',
         'eyebrow': '做产品时，也想这些问题',
@@ -278,7 +278,7 @@ def write_search(posts, locale):
     else:
         profile = {'authors': ['赵之赫'], 'title': c['author'], 'permalink': BASE + '/zh/', 'relpermalink': '/zh/', 'type': 'page',
                    'summary': 'AxiomsTen 创始人兼 CEO，正在打造 Spiro。2025 年获香港中文大学博士学位。',
-                   'content': '赵之赫（Bob），AxiomsTen 创始人兼 CEO，正在打造 Spiro，关注个人 AI、长期记忆与理解具体情境的智能体。2025 年获香港中文大学博士学位，研究高效 AI 系统。此前共同创办 ThingX 并担任 CEO，与团队参与打造 Nuna（原名 PieX）和 Collie R1。2024 年入选福布斯中国 30 Under 30。'}
+                   'content': '赵之赫（Bob），AxiomsTen 创始人兼 CEO，正在打造 Spiro，探索让个人 AI 在日常生活中理解一个人，并在长期相处中提供更贴切的帮助。团队从日常记录、事件卡和信件开始，目前正在探索成年子女与父母之间的生活分享。2025 年获香港中文大学博士学位，研究高效 AI 系统。此前共同创办 ThingX 并担任 CEO，与团队参与打造 Nuna（原名 PieX）和 Collie R1。2024 年入选福布斯中国 30 Under 30。'}
     search = [{**profile, 'language': c['language']}]
     search += [dict(title=p['title'], summary=p['description'], permalink=BASE + p['path'], content=re.sub(r'[#*`>]', '', p['source']), language=c['language']) for p in posts]
     (ROOT / c['prefix'].strip('/') / 'index.json').write_text(json.dumps(search, ensure_ascii=False, indent=2) + '\n')
